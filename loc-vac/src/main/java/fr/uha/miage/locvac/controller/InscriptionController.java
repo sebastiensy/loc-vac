@@ -11,12 +11,15 @@ import fr.uha.miage.locvac.model.User;
 @Controller
 public class InscriptionController {
 	
+	// pour afficher le formulaire
 	@RequestMapping(value="/inscription", method=RequestMethod.GET)
     public String affichageFormInscription(Model model) {
     	model.addAttribute("user", new User());
     	return "inscription";
     }
     
+	
+	// bouton submit du formulaire
     @RequestMapping(value="/inscription", method=RequestMethod.POST)
     public String formInscriptionSubmit(@ModelAttribute User user, Model model) {
     	model.addAttribute("user", user);
