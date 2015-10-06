@@ -1,5 +1,8 @@
 package fr.uha.miage.locvac.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Chambre {
 	
 	private int idChambre;
