@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.uha.miage.locvac.model.User;
+
 @Controller
 public class WebController {
 
@@ -25,7 +27,8 @@ public class WebController {
     }
     
     @RequestMapping("/inscription")
-    public String inscription() {
+    public String affichageForminscription(Model model) {
+    	model.addAttribute("user", new User());
     	return "inscription";
     }
     
