@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LocVacApplication {
 
 	//test
+	//azlhkal azf
     public static void main(String[] args) {
         SpringApplication.run(LocVacApplication.class, args);
     }
