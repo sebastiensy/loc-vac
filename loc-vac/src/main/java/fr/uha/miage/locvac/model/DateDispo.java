@@ -17,6 +17,7 @@ public class DateDispo {
 	
 	private Date dateDebut;
 	private Date dateFin;
+	
 	public int getIdDateDispo() {
 		return idDateDispo;
 	}

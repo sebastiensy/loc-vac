@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ChambreRepository extends CrudRepository<Chambre, Integer>{
 
-
+	public Chambre findByIdChambre(int idChambre);
 	
 }

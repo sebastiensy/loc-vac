@@ -16,19 +16,19 @@ public class Equipement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int IdEquipement;
+	private int idEquipement;
 	
 	@Column(length=40)
 	private String nomEquipement;
 
 
-	public int getIdEquipement() {
-		return IdEquipement;
+	public int getidEquipement() {
+		return idEquipement;
 	}
 
 
 	public void setIdEquipement(int idEquipement) {
-		IdEquipement = idEquipement;
+		this.idEquipement = idEquipement;
 	}
 
 

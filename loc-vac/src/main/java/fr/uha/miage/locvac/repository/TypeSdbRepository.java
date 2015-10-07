@@ -5,5 +5,6 @@ import fr.uha.miage.locvac.model.TypeSdb;
 
 public interface TypeSdbRepository extends CrudRepository<TypeSdb, Integer>{
 
-	
+	public TypeSdb findByIdTsdb(int idTsdb);
+	public TypeSdb findByNomTsdb(String nomTsdb);
 }
