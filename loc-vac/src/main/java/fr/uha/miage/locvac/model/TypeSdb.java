@@ -1,14 +1,14 @@
 package fr.uha.miage.locvac.model;
-//import fr.uha.miage.locvac.model.Location;
-//import java.util.Collection;
-//import org.hibernate.mapping.Collection;
+
+
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class TypeSdb {
@@ -38,8 +38,8 @@ public class TypeSdb {
 	}
 	
 	
-//	@ManyToOne
-//	private Collection<Location> locations;
+	@ManyToMany
+	private Collection<Location> locations;
 	
 	
 	

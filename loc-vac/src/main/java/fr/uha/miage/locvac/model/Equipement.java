@@ -1,12 +1,14 @@
 package fr.uha.miage.locvac.model;
 
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -39,8 +41,8 @@ public class Equipement {
 		this.nomEquipement = nomEquipement;
 	}
 	
-	//@ManyToOne
-	//private Collection<Location> locations;;
+	@ManyToMany
+	private Collection<Location> locations;
 	
 	
 }
