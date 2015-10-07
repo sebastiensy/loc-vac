@@ -1,5 +1,6 @@
 package fr.uha.miage.locvac.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,8 @@ public class TypeSdb {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idTsdb;
 	
+	
+	@Column(length=40)
 	private	String nomTsdb;
 
 	public int getIdTsdb() {

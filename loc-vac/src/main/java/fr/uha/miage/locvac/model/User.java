@@ -1,5 +1,6 @@
 package fr.uha.miage.locvac.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +13,19 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
 	
+	@Column(length=40)
 	private String nomUser;
+	
+	@Column(length=40)
 	private String prenomUser;
+	
+	@Column(length=100)
 	private String emailUser;
+	
+	@Column(length=200)
 	private String mdpUser;
+	
+	@Column(length=10)
 	private String telUser;
 	
 	public int getIdUser() {

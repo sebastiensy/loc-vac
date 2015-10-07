@@ -1,5 +1,6 @@
 package fr.uha.miage.locvac.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,14 +14,32 @@ public class Location {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idLocation;
 	
+	@Column(length=100)
 	private String nomLocation;
+	
+	
 	private int capaciteLocation;
+	
+	@Column(length=40)
 	private String villeLocation;
+	
+	@Column(length=40)
 	private String typeProprieteLocation;
+	
+	@Column(length=40)
 	private String paysLocation;
+	
+	@Column(length=100)
 	private String adresseLocation;
+	
+	
 	private int codePostalLocation;
+	
+	
 	private double prixLocation;
+	
+	
+	@Column(length=1000)
 	private String descriptionLocation;
 	
 	

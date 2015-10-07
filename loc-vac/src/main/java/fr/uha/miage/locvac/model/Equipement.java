@@ -1,5 +1,6 @@
 package fr.uha.miage.locvac.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,7 @@ public class Equipement {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int IdEquipement;
 	
-	
+	@Column(length=40)
 	private String nomEquipement;
 
 
