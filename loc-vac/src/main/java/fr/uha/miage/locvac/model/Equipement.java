@@ -1,10 +1,13 @@
 package fr.uha.miage.locvac.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
 
 @Entity
 public class Equipement {
@@ -35,5 +38,9 @@ public class Equipement {
 	public void setNomEquipement(String nomEquipement) {
 		this.nomEquipement = nomEquipement;
 	}
+	
+	//@ManyToOne
+	//private Collection<Location> locations;;
+	
 	
 }

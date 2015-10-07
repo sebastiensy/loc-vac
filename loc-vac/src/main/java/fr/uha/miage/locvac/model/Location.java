@@ -1,10 +1,19 @@
 package fr.uha.miage.locvac.model;
 
+import fr.uha.miage.locvac.model.TypePropriete;
+//import fr.uha.miage.locvac.model.Equipement;
+
+
+//import org.hibernate.mapping.Collection;
+//import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -104,5 +113,25 @@ public class Location {
 	public void setDescriptionLocation(String descriptionLocation) {
 		this.descriptionLocation = descriptionLocation;
 	}
+	
+	
+	// location dans la classe equipement
+	//@ManyToMany(mappedBy="locations")
+	//private Collection<Equipement> equipements;
+	
+	// location dans la classe typeSdb
+	//@ManyToMany(mappedBy="locations")
+	//private Collection<TypeSdb> typeSdbs;
+	
+	
+	@ManyToOne
+	private TypePropriete typePropriete;
+	
+	
+	
+	
+	
+	
+	
 	
 }
