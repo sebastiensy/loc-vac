@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -121,13 +122,24 @@ public class Location {
 	private Collection<TypeSdb> typeSdbs;
 	
 	
+	// typepropriete
 	@ManyToOne
 	private TypePropriete typePropriete;
 	
 	
+	//chambres
+	@OneToMany(mappedBy="locationChambre")
+	private Collection<Chambre> chambres;
 	
 	
+	//date dispo
+	@OneToMany(mappedBy="locationDateDispo")
+	private Collection<DateDispo> dateDispo;
 	
+	
+	//reserver
+	@OneToMany(mappedBy="locationReserver")
+	private Collection<Reserver> reserver;
 	
 	
 	
