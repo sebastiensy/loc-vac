@@ -4,5 +4,6 @@ import fr.uha.miage.locvac.model.Reserver;
 
 public interface ReserverRepository extends CrudRepository<Reserver, Integer>{
 
+	public Reserver findByIdReserver(int idReserver);
 	
 }
