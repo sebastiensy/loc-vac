@@ -15,4 +15,18 @@ public class AdminController {
     public String afficheUsers() {
         return "/admin/tableusers";
     }
+
+	@RequestMapping("/admin/reservations")
+    public String afficheReservations() {
+        return "/admin/reservations";
+    }
+	
+	
+	@RequestMapping("/admin/afficherlocations")
+    public String afficheLocations() {
+        return "/admin/afficherlocations";
+    }
+
 }
+
+
