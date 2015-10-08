@@ -18,7 +18,7 @@ public class WebController {
         return "greeting";
     }*/
     
-    @RequestMapping("/greeting")
+    @RequestMapping("/admin/greeting")
     public String greeting() {
         return "greeting";
     }
