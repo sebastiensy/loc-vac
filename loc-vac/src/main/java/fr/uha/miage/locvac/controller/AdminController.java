@@ -11,8 +11,8 @@ public class AdminController {
         return "/admin/index";
     }
 	
-	@RequestMapping("/admin/tables")
+	@RequestMapping("/admin/tableusers")
     public String afficheUsers() {
-        return "/admin/tables";
+        return "/admin/tableusers";
     }
 }
