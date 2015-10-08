@@ -10,4 +10,9 @@ public class AdminController {
     public String afficheIndexAdmin() {
         return "/admin/index";
     }
+	
+	@RequestMapping("/admin/tables")
+    public String afficheUsers() {
+        return "/admin/tables";
+    }
 }
