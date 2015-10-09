@@ -68,6 +68,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/equipements")
     public String afficheEquipement(Model model) {
+		System.out.println("test");
 		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
 		model.addAttribute("equipements", equipements);
 		return "/admin/equipements";
