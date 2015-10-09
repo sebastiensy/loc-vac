@@ -234,8 +234,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each=" equipement : ${session.cart}" >
-                                   		<td th:text="${equipement.nomEquipement}" />
+                                    <tr th:each=" equipement : ${equipements}" >
+                                   		<td th:text="${equipement.idEquipement}" />
                                        	<td th:text="${equipement.nomEquipement}" />
                                    	</tr>	
                                 </tbody>

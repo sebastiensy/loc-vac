@@ -5,15 +5,21 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uha.miage.locvac.model.Equipement;
+import fr.uha.miage.locvac.repository.EquipementRepository;
 
 @Controller
 public class AdminController {
+	
+	@Autowired
+	private EquipementRepository equipementRepository;
 
 	@RequestMapping("/admin/index")
     public String afficheIndexAdmin() {
@@ -42,21 +48,28 @@ public class AdminController {
         return "/admin/afficherlocations";
     }
 	
+	
+	/*
+	 * Equipement
+	 */
 	@RequestMapping(value="/admin/equipements", method=RequestMethod.GET)
-    public String afficheFormEquipement(HttpSession session, Equipement equipement) {
+    public String afficheFormEquipement(Model model) {
+		model.addAttribute("equipement", new Equipement());
         return "/admin/equipements";
     }
 	
 	@RequestMapping(value="/admin/equipements", method=RequestMethod.POST)
-    public String afficheEquipement(HttpSession session, Equipement equipement, BindingResult bindingResult) {
-		List<Equipement> cart = (List<Equipement>) session.getAttribute("cart");
-    	if (cart == null)
-     		cart = new ArrayList<Equipement>();
-    	
-    	if (!bindingResult.hasErrors())
-    		cart.add(equipement);
-   	
-		session.setAttribute("cart", cart);
+    public String sauveEquipement(Equipement equipement) {
+		
+		equipementRepository.save(equipement);
+		System.out.println(equipementRepository.findAll());
+		return "/admin/equipements";
+    }
+	
+	@RequestMapping(value="/admin/equipements")
+    public String afficheEquipement(Model model) {
+		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
+		model.addAttribute("equipements", equipements);
 		return "/admin/equipements";
     }
 

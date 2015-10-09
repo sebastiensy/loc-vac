@@ -43,6 +43,13 @@ public class Equipement {
 	
 	@ManyToMany
 	private Collection<Location> locations;
+
+
+	@Override
+	public String toString() {
+		return "Equipement [idEquipement=" + idEquipement + ", nomEquipement=" + nomEquipement + "]";
+	}
+	
 	
 	
 }
