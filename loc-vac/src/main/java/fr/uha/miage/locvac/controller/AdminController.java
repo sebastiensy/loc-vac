@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uha.miage.locvac.model.Equipement;
+import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.repository.EquipementRepository;
+import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	private EquipementRepository equipementRepository;
+	
+	@Autowired
+	private TypeProprieteRepository typeProprieteRepository;
 
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
@@ -104,10 +109,45 @@ public class AdminController {
 	
 	// pour pouvoir supprimer un equipement grâce à son id
 	@RequestMapping("/supprimerEquipement/{idEquipement}")
-	public String deleteProduct(@PathVariable("idEquipement") Integer idEquipement) {
+	public String supprimeEquipement(@PathVariable("idEquipement") Integer idEquipement) {
 		
 		equipementRepository.delete(idEquipement);
 		return "redirect:/admin/equipements";
+	}
+	
+	
+	/*
+	 * PAGE TYPE PROPRIETE
+	 */
+	
+	// pour afficher la page type proprietes
+	@RequestMapping(value="/admin/typeproprietes", method=RequestMethod.GET)
+    public String afficheTypeProprietes(Model model) {
+		
+		// pour initialiser le formulaire
+		model.addAttribute("typePropriete", new TypePropriete());
+			
+		// pour afficher dans le tableau la liste des types proprietes
+		List<TypePropriete> typeProprietes = (List<TypePropriete>) typeProprieteRepository.findAll();
+		model.addAttribute("typeProprietes", typeProprietes);
+        return "/admin/typeproprietes";
+    }
+	
+	// pour sauvegarder un typepropriete dans le repository
+	@RequestMapping(value="/admin/typeproprietes", method=RequestMethod.POST)
+    public String sauveEquipement(TypePropriete typePropriete) {
+		
+		typeProprieteRepository.save(typePropriete);
+		System.out.println(typeProprieteRepository.findAll());
+		return "redirect:/admin/typeproprietes";
+    }
+	
+	// pour pouvoir supprimer un equipement grâce à son id
+	@RequestMapping("/supprimerTypePropriete/{idTypeProp}")
+	public String supprimeTypePropriete(@PathVariable("idTypeProp") Integer idTypeProp) {
+		
+		typeProprieteRepository.delete(idTypeProp);
+		return "redirect:/admin/typeproprietes";
 	}
 	
 

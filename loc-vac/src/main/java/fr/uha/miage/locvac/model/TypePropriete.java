@@ -1,6 +1,5 @@
 package fr.uha.miage.locvac.model;
-import fr.uha.miage.locvac.model.Location;
-//import org.hibernate.mapping.Collection;
+
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -40,6 +39,11 @@ public class TypePropriete {
 	
 	@OneToMany(mappedBy="typePropriete")
 	private Collection<Location> locations;
+
+	@Override
+	public String toString() {
+		return "TypePropriete [idTypeProp=" + idTypeProp + ", nomTypePropriete=" + nomTypePropriete + "]";
+	}
 	
 	
 	
