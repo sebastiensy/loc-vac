@@ -63,6 +63,10 @@ public class AdminController {
 		// pour afficher la liste des equipements
 		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
 		model.addAttribute("equipements", equipements);
+		
+		// pour afficher la liste des types de propriete
+		List<TypePropriete> typeProprietes = (List<TypePropriete>) typeProprieteRepository.findAll();
+		model.addAttribute("typeProprietes", typeProprietes);
         return "/admin/creerlocation";
     }
 	
