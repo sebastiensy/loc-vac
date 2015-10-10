@@ -32,22 +32,37 @@ public class AdminController {
         return "/admin/tableusers";
     }
 	
-	@RequestMapping("/admin/creerlocation")
-    public String afficheFormCreerLocation() {
-        return "/admin/creerlocation";
-    }
-	
-
 	@RequestMapping("/admin/reservations")
     public String afficheReservations() {
         return "/admin/reservations";
     }
 	
 	
+	
+	/*
+	 * 	PAGE LOCATION
+	 */
+	
+	// pour afficher la page creerlocation
+	@RequestMapping("/admin/creerlocation")
+    public String afficheFormCreerLocation(Model model) {
+		
+		// pour afficher la liste des equipements
+		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
+		model.addAttribute("equipements", equipements);
+        return "/admin/creerlocation";
+    }
+	
+	// pour afficher les locations
 	@RequestMapping("/admin/afficherlocations")
     public String afficheLocations() {
         return "/admin/afficherlocations";
     }
+
+	
+	
+	
+	
 	
 	
 	
@@ -60,9 +75,10 @@ public class AdminController {
 	// pour afficher la page equipements
 	@RequestMapping(value="/admin/equipements", method=RequestMethod.GET)
     public String afficheEquipements(Model model) {
+		
 		// pour initialiser le formulaire
 		model.addAttribute("equipement", new Equipement());
-		
+			
 		// pour afficher dans le tableau la liste des equipements
 		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
 		model.addAttribute("equipements", equipements);

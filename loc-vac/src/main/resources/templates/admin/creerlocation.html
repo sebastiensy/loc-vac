@@ -265,14 +265,8 @@
                             
                             <div class="form-group">
                                 <label>Equipements</label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" />1
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" />2
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" />3
+                                <label class="checkbox-inline" th:each=" equipement : ${equipements}">
+                                    <input type="checkbox" th:text="${equipement.nomEquipement}"/>
                                 </label>
                             </div>
                             
