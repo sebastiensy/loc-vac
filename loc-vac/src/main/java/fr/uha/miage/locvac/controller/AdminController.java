@@ -137,7 +137,7 @@ public class AdminController {
         return "/admin/typeproprietes";
     }
 	
-	// pour sauvegarder un typepropriete dans le repository
+	// pour sauvegarder un type de propriete dans le repository
 	@RequestMapping(value="/admin/typeproprietes", method=RequestMethod.POST)
     public String sauveEquipement(TypePropriete typePropriete) {
 		
@@ -146,7 +146,7 @@ public class AdminController {
 		return "redirect:/admin/typeproprietes";
     }
 	
-	// pour pouvoir supprimer un equipement grâce à son id
+	// pour pouvoir supprimer un type de propriete grâce à son id
 	@RequestMapping("/supprimerTypePropriete/{idTypeProp}")
 	public String supprimeTypePropriete(@PathVariable("idTypeProp") Integer idTypeProp) {
 		
