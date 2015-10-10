@@ -22,6 +22,14 @@ public class AdminController {
 	@Autowired
 	private EquipementRepository equipementRepository;
 
+	/*@RequestMapping("/admin/header")
+    public String afficheHeaderAdmin() {
+        return "/admin/header";
+    }*/
+	@RequestMapping("/admin/menu")
+    public String afficheMenuAdmin() {
+        return "/admin/menu";
+    }
 	@RequestMapping("/admin/index")
     public String afficheIndexAdmin() {
         return "/admin/index";
