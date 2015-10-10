@@ -22,7 +22,7 @@ public class Equipement {
 	private String nomEquipement;
 
 
-	public int getidEquipement() {
+	public int getIdEquipement() {
 		return idEquipement;
 	}
 
