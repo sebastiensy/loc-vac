@@ -188,10 +188,10 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="equipements.html"><i class="fa fa-fw fa-wrench"></i> Equipement</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="typeproprietes.html"><i class="fa fa-fw fa-wrench"></i> Type Propriete</a>
                     </li>
                     <li>
@@ -218,7 +218,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Equipements
+                            Type de propriété
                         </h1>
                     </div>
                 </div>
@@ -227,11 +227,11 @@
                 <div class="row">
                     <div class="col-lg-6">
 
-                        <form role="form" action="#" th:action="@{/admin/equipements}" th:object="${equipement}" method="post">
+                        <form role="form" action="#" th:action="@{/admin/typeproprietes}" th:object="${typePropriete}" method="post">
 
                             <div class="form-group">
-                                <label>Nom de l'équipement</label>
-                                <input type="text" class="form-control" th:field="*{nomEquipement}"/>
+                                <label>Nom du type de propriété</label>
+                                <input type="text" class="form-control" th:field="*{nomTypePropriete}"/>
                             </div>
                             
                             <button type="submit" class="btn btn-default">Créer</button>
@@ -246,17 +246,17 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-	                                    <th>Id Equipement</th>
-                                        <th>Nom Equipement</th>
+	                                    <th>Id Type Propriete</th>
+                                        <th>Nom Type Propriete</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each=" equipement : ${equipements}" >
-                                   		<td th:text="${equipement.idEquipement}" />
-                                       	<td th:text="${equipement.nomEquipement}" />
+                                    <tr th:each=" typePropriete : ${typeProprietes}" >
+                                   		<td th:text="${typePropriete.idTypeProp}" />
+                                       	<td th:text="${typePropriete.nomTypePropriete}" />
                                        	<td>
-											<a th:href="@{'/supprimerEquipement/'+${equipement.idEquipement}}">Supprimer</a>
+											<a th:href="@{'/supprimerTypePropriete/'+${typePropriete.idTypeProp}}">Supprimer</a>
 										</td>
                                    	</tr>	
                                 </tbody>
