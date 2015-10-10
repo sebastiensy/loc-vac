@@ -231,12 +231,16 @@
                                     <tr>
 	                                    <th>Id Equipement</th>
                                         <th>Nom Equipement</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each=" equipement : ${equipements}" >
                                    		<td th:text="${equipement.idEquipement}" />
                                        	<td th:text="${equipement.nomEquipement}" />
+                                       	<td>
+											<a th:href="@{'/supprimerEquipement/'+${equipement.idEquipement}}">Supprimer</a>
+										</td>
                                    	</tr>	
                                 </tbody>
                             </table>

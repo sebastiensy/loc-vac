@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -49,30 +50,42 @@ public class AdminController {
     }
 	
 	
+	
+	
+	
 	/*
-	 * Equipement
+	 * PAGE EQUIPEMENTS
 	 */
+	
+	// pour afficher la page equipements
 	@RequestMapping(value="/admin/equipements", method=RequestMethod.GET)
-    public String afficheFormEquipement(Model model) {
+    public String afficheEquipements(Model model) {
+		// pour initialiser le formulaire
 		model.addAttribute("equipement", new Equipement());
+		
+		// pour afficher dans le tableau la liste des equipements
+		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
+		model.addAttribute("equipements", equipements);
         return "/admin/equipements";
     }
 	
+	// pour sauvegarder un equipement dans le repository
 	@RequestMapping(value="/admin/equipements", method=RequestMethod.POST)
     public String sauveEquipement(Equipement equipement) {
 		
 		equipementRepository.save(equipement);
-		System.out.println(equipementRepository.findAll());
-		return "/admin/equipements";
+		//System.out.println(equipementRepository.findAll());
+		return "redirect:/admin/equipements";
     }
 	
-	@RequestMapping(value="/admin/equipements")
-    public String afficheEquipement(Model model) {
-		System.out.println("test");
-		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
-		model.addAttribute("equipements", equipements);
-		return "/admin/equipements";
-    }
+	// pour pouvoir supprimer un equipement grâce à son id
+	@RequestMapping("/supprimerEquipement/{idEquipement}")
+	public String deleteProduct(@PathVariable("idEquipement") Integer idEquipement) {
+		
+		equipementRepository.delete(idEquipement);
+		return "redirect:/admin/equipements";
+	}
+	
 
 }
 
