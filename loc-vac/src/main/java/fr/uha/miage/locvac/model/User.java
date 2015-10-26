@@ -72,5 +72,12 @@ public class User {
 	//user
 	@OneToMany(mappedBy="userReserver")
 	private Collection<Reserver> reserver;
+
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", nomUser=" + nomUser + ", prenomUser=" + prenomUser + ", emailUser="
+				+ emailUser + ", mdpUser=" + mdpUser + ", telUser=" + telUser + ", reserver=" + reserver + "]";
+	}
+	
 	
 }

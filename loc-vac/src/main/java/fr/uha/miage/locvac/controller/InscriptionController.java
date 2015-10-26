@@ -29,7 +29,8 @@ public class InscriptionController {
     public String formInscriptionSubmit(@ModelAttribute User user, Model model) {
     	model.addAttribute("user", user);
     	userRepository.save(user);
-    	return "inscription";
+    	System.out.println(userRepository.findAll());
+    	return "redirect:/index";
     }
     
 

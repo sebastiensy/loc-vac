@@ -1,5 +1,6 @@
 package fr.uha.miage.locvac.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.uha.miage.locvac.model.User;
+import fr.uha.miage.locvac.repository.UserRepository;
 
 @Controller
 public class WebController {
@@ -17,6 +19,9 @@ public class WebController {
         model.addAttribute("name", name);
         return "greeting";
     }*/
+	
+	@Autowired
+	private UserRepository userRepository;
     
     @RequestMapping("/admin/greeting")
     public String greeting() {
@@ -25,6 +30,7 @@ public class WebController {
     
     @RequestMapping("/index")
     public String index() {
+    	System.out.println(userRepository.findAll());
     	return "index";
     }
     
