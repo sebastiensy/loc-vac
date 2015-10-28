@@ -31,9 +31,6 @@ public class Location {
 	private String villeLocation;
 	
 	@Column(length=40)
-	private String typeProprieteLocation;
-	
-	@Column(length=40)
 	private String paysLocation;
 	
 	@Column(length=100)
@@ -75,12 +72,6 @@ public class Location {
 	public void setVilleLocation(String villeLocation) {
 		this.villeLocation = villeLocation;
 	}
-	public String getTypeProprieteLocation() {
-		return typeProprieteLocation;
-	}
-	public void setTypeProprieteLocation(String typeProprieteLocation) {
-		this.typeProprieteLocation = typeProprieteLocation;
-	}
 	public String getPaysLocation() {
 		return paysLocation;
 	}
@@ -112,6 +103,9 @@ public class Location {
 		this.descriptionLocation = descriptionLocation;
 	}
 	
+	// typepropriete
+	@ManyToOne
+	private TypePropriete typePropriete;
 	
 	// location dans la classe equipement
 	@ManyToMany(mappedBy="locations")
@@ -121,16 +115,9 @@ public class Location {
 	@ManyToMany(mappedBy="locations")
 	private Collection<TypeSdb> typeSdbs;
 	
-	
-	// typepropriete
-	@ManyToOne
-	private TypePropriete typePropriete;
-	
-	
 	//chambres
 	@OneToMany(mappedBy="locationChambre")
 	private Collection<Chambre> chambres;
-	
 	
 	//date dispo
 	@OneToMany(mappedBy="locationDateDispo")
