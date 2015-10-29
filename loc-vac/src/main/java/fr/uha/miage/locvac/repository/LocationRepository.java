@@ -9,7 +9,6 @@ public interface LocationRepository extends CrudRepository<Location, Integer>{
 	public Location findByNomLocation(String nomLocation);
 	public Location findByCapaciteLocation(int capaciteLocation);
 	public Location findByVilleLocation(String villeLocation);
-	public Location findByTypeProprieteLocation(String typeProprieteLocation);
 	public Location findByPaysLocation(String paysLocation);
 	public Location findByCodePostalLocation(int codePostalLocation);
 	public Location findByPrixLocation(double prixLocation);
