@@ -1,6 +1,7 @@
 package fr.uha.miage.locvac.model;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -71,7 +72,7 @@ public class User {
 	
 	//user
 	@OneToMany(mappedBy="userReserver")
-	private Collection<Reserver> reserver;
+	private List<Reserver> reserver;
 
 	@Override
 	public String toString() {

@@ -3,6 +3,7 @@ import fr.uha.miage.locvac.model.Chambre;
 
 //import org.hibernate.mapping.Collection;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +40,7 @@ public class TypeLit {
 	}
 	
 	@ManyToMany(mappedBy="typeLits")
-	private Collection<Chambre> chambres;
+	private List<Chambre> chambres;
 	
 
 }

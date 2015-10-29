@@ -2,6 +2,7 @@ package fr.uha.miage.locvac.model;
 
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +43,7 @@ public class Equipement {
 	}
 	
 	@ManyToMany
-	private Collection<Location> locations;
+	private List<Location> locations;
 
 
 	@Override

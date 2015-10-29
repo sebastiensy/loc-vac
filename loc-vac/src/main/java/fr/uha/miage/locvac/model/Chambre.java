@@ -4,6 +4,7 @@ import fr.uha.miage.locvac.model.TypeLit;
 
 //import org.hibernate.mapping.Collection;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Chambre  {
 	
 	
 	@ManyToMany
-	private Collection<TypeLit> typeLits;
+	private List<TypeLit> typeLits;
 	
 	@ManyToOne
 	private Location locationChambre;

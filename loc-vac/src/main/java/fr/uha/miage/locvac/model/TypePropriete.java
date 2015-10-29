@@ -1,6 +1,7 @@
 package fr.uha.miage.locvac.model;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +39,7 @@ public class TypePropriete {
 	
 	
 	@OneToMany(mappedBy="typePropriete")
-	private Collection<Location> locations;
+	private List<Location> locations;
 
 	@Override
 	public String toString() {
