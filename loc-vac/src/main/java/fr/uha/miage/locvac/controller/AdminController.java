@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uha.miage.locvac.model.Equipement;
+import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.repository.EquipementRepository;
@@ -64,6 +65,9 @@ public class AdminController {
 	// pour afficher la page creerlocation
 	@RequestMapping("/admin/creerlocation")
     public String afficheFormCreerLocation(Model model) {
+		
+		// pour intialiser une location
+		model.addAttribute("location", new Location());
 		
 		// pour afficher la liste des equipements
 		List<Equipement> equipements = (List<Equipement>) equipementRepository.findAll();
@@ -164,20 +168,20 @@ public class AdminController {
 	 * PAGE TYPE SALLE DE BAIN
 	 */
 	
-	// pour afficher la page type proprietes
+	// pour afficher la page type salle de bain
 	@RequestMapping(value="/admin/typesdb", method=RequestMethod.GET)
     public String afficheTypeSdb(Model model) {
 		
 		// pour initialiser le formulaire
 		model.addAttribute("typeSdb", new TypeSdb());
 			
-		// pour afficher dans le tableau la liste des types proprietes
+		// pour afficher dans le tableau la liste des types salle de bain
 		List<TypeSdb> typeSdbs = (List<TypeSdb>) typeSdbRepository.findAll();
 		model.addAttribute("typeSdbs", typeSdbs);
         return "/admin/typesdb";
     }
 	
-	// pour sauvegarder un type de propriete dans le repository
+	// pour sauvegarder un type de salle de bain dans le repository
 	@RequestMapping(value="/admin/typesdb", method=RequestMethod.POST)
     public String sauveTypeSdb(TypeSdb typeSdb) {
 		
@@ -186,7 +190,7 @@ public class AdminController {
 		return "redirect:/admin/typesdb";
     }
 	
-	// pour pouvoir supprimer un type de propriete grâce à son id
+	// pour pouvoir supprimer un type de salle de bain grâce à son id
 	@RequestMapping("/supprimerTypeSdb/{idTypeSdb}")
 	public String supprimeTypeSdb(@PathVariable("idTypeSdb") Integer idTypeSdb) {
 		
