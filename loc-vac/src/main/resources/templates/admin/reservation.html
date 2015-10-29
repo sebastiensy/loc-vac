@@ -166,7 +166,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Réservation <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
@@ -180,7 +180,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Utilisateur <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
@@ -237,89 +237,44 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Réservations</h2>
+                    
+                        <h2>Utilisateurs</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-	                                    <th>Id Réservation</th>
-                                        <th>Début de la réservation</th>
-                                        <th>Fin de la réservation</th>
-                                        <th>Id Location</th>
-                                        <th>Id Utilisateur</th>
-                                        <th>Action Modif</th>
-                                        <th>Action Supprimer</th>
-                                    </tr>
+	                                    <th>Id Reservation</th>
+                                        <th>Date début</th>
+                                        <th>Date fin</th>
+                                        <th>Prix</th>
+                                        <th>Id du logement</th>
+                                        <th>Nom du logement</th>
+                                        <th>Id de l'utilisateur</th>
+                                        <th>Nom de l'utilisateur</th>
+                                        <th>Prénom de l'utilisateur</th>
+                                        
+                                   </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>007</td>
-                                        <td>03/03/2015</td>
-                                        <td>09/03/2015</td>
-                                        <td>003</td>
-                                        <td>002</td>
-										<td>Modifier</td>
-                                        <td>Supprimer</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$234.12</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/sales.html</td>
-                                        <td>665</td>
-                                        <td>21.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$16.34</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog.html</td>
-                                        <td>9516</td>
-                                        <td>89.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$1644.43</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/404.html</td>
-                                        <td>23</td>
-                                        <td>34.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$23.52</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/services.html</td>
-                                        <td>421</td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
-                                        <td>$321.33</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td>1233</td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
-                                        <td>$321.33</td>
-                                        <td>$321.33</td>
-                                    </tr>
+                      
+   									<tr th:each=" reserver : ${reservers}" >
+                                   		<td th:text="${reserver.idReserver}" />
+                                       	<td th:text="${reserver.dateDebutReserver}" />
+                                       	<td th:text="${reserver.dateFinReserver}" />
+                                       	<td th:text="${reserver.prixReserver}" />
+                                       	<td th:text="${reserver.locationReserver.idLocation}" />
+                                       	<td th:text="${reserver.locationReserver.nomLocation}" />
+                                       	<td th:text="${reserver.locationReserver.idLocation}" />
+                                       	<td th:text="${reserver.userReserver.idUser}" />
+                                       	<td th:text="${reserver.userReserver.nomUser}" />
+                                       	<td th:text="${reserver.userReserver.prenomUser}" />
+                                   	</tr>	
+   
                                 </tbody>
                             </table>
                         </div>
-                    </div>
                   
-                  
-                  
-                  
-              
-              
+                                 
                 </div>
                 <!-- /.row -->
 
