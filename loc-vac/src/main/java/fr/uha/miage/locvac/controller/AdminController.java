@@ -55,6 +55,9 @@ public class AdminController {
 	private ReserverRepository reserverRepository;
 	
 	
+	
+	
+	
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
         return "/admin/header";
@@ -303,22 +306,40 @@ public class AdminController {
 	
 	
 	/*
-	 * PAGE UTILISATEUR 
+	 * PAGE RESERVATION 
 	 */
 	
-	// pour afficher la page user
+	// pour afficher la page reservation
 	@RequestMapping(value="/admin/reservation", method=RequestMethod.GET)
     public String afficheReservation(Model model) {
 		
 		// pour initialiser le formulaire
 		//model.addAttribute("reserver", new Reserver());
 			
-		// pour afficher dans le tableau la liste des utilisateurs 
+		// pour afficher dans le tableau la liste des reservations 
 		List<Reserver> reservers = (List<Reserver>) reserverRepository.findAll();
 		model.addAttribute("reservers", reservers);
         return "/admin/reservation";
     }
 	
+	
+	
+	/*
+	 * PAGE  LOCATION AFFICHAGE
+	 */
+	
+	// pour afficher la page location
+	@RequestMapping(value="/admin/afficherlocations", method=RequestMethod.GET)
+    public String afficheLocation(Model model) {
+		
+		// pour initialiser le formulaire
+		//model.addAttribute("location", new Location());
+			
+		// pour afficher dans le tableau la liste des locations 
+		List<Location> locations = (List<Location>) locationRepository.findAll(); // demander si 2 fois le mm?
+		model.addAttribute("locations", locations);
+        return "/admin/afficherlocations";
+    }
 	
 	
 	

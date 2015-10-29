@@ -237,91 +237,49 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Réservations</h2>
+                    
+                        <h2>Locations</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
 	                                    <th>Id Location</th>
                                         <th>Nom</th>
-                                        <th>Capacite(m²)</th>
+                                        <th>Capacite</th>
                                         <th>Adresse</th>
                                         <th>Code postal</th>
                                         <th>Ville</th>
                                         <th>Pays</th>
-                                        <th>Type de propriété</th>
                                         <th>Prix (en euros)</th>
+                                        <th>Type de propriété</th>
+                                        
                                         <th>Modifer</th>
                                         <th>Supprimer</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>007</td>
-                                        <td>Le joli phare</td>
-                                        <td>2</td>
-                                        <td>Au bord de la mer</td>
-                                        <td>76600</td>
-                                        <td>Le havre</td>
-                                        <td>France</td>
-                                        <td>Phare</td>
-                                        <td>3</td>
+                          	         <tr th:each=" location : ${locations}" >
+                            	   		<td th:text="${location.idLocation}" />
+                                       	<td th:text="${location.nomLocation}" />
+                                       	<td th:text="${location.capaciteLocation}" />
+                                   		<td th:text="${location.adresseLocation}" />
+                                   		<td th:text="${location.codePostalLocation}" />
+                                      	<td th:text="${location.villeLocation}" />
+                                		<td th:text="${location.paysLocation}" />
+                                        <td th:text="${location.prixLocation}" />
+                                        <td>  type de propriete </td>      
                                         <td>Modifier</td>
-                                        <td>Supprimer</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$234.12</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/sales.html</td>
-                                        <td>665</td>
-                                        <td>21.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$16.34</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog.html</td>
-                                        <td>9516</td>
-                                        <td>89.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$1644.43</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/404.html</td>
-                                        <td>23</td>
-                                        <td>34.3%</td>
-                                        <td>$321.33</td>
-                                        <td>$23.52</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/services.html</td>
-                                        <td>421</td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
-                                        <td>$321.33</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td>1233</td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
-                                        <td>$321.33</td>
-                                        <td>$321.33</td>
-                                    </tr>
+                                        <td>Supprimer</td>                                    	
+                                   	</tr>	
+   
+                                    
+                                    
+                                    
+                                  
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                   
                   
                   
                   
