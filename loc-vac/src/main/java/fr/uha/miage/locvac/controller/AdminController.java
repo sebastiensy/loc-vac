@@ -18,10 +18,12 @@ import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.TypeLit;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
+import fr.uha.miage.locvac.model.User;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.TypeLitRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
+import fr.uha.miage.locvac.repository.UserRepository;
 
 @Controller
 public class AdminController {
@@ -38,6 +40,10 @@ public class AdminController {
 	
 	@Autowired
 	private TypeLitRepository typeLitRepository;
+	
+	
+	@Autowired
+	private UserRepository UserRepository;
 	
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
@@ -250,6 +256,30 @@ public class AdminController {
 		return "redirect:/admin/typelit";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * PAGE UTILISATEUR 
+	 */
+	
+	// pour afficher la page user
+	@RequestMapping(value="/admin/tableusers", method=RequestMethod.GET)
+    public String afficheUser(Model model) {
+		
+		// pour initialiser le formulaire
+		model.addAttribute("user", new User());
+			
+		// pour afficher dans le tableau la liste des utilisateurs 
+		List<User> users = (List<User>) UserRepository.findAll();
+		model.addAttribute("users", users);
+        return "/admin/tableusers";
+    }
 	
 	
 	
