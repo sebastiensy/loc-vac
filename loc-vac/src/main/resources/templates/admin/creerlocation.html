@@ -279,7 +279,7 @@
                             <div class="form-group">
                                 <label>Equipements</label>
                                 <label class="checkbox-inline" th:each=" equipement : ${equipements}">
-                                    <input type="checkbox" th:text="${equipement.nomEquipement}"/>
+                                    <input type="checkbox" th:text="${equipement.nomEquipement}" th:field="*{equipements}" th:value="${equipement.idEquipement}"/>
                                 </label>
                             </div>
                             

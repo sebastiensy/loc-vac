@@ -111,12 +111,10 @@ public class AdminController {
 	
 	// pour creer une location
 	@RequestMapping(value="/admin/creerlocation", method=RequestMethod.POST)
-	public String creerLocation(Location location, @ModelAttribute("typeProprietes") TypePropriete typePropriete, Model model) {
+	public String creerLocation(Location location) {
 		
-		String option = typePropriete.getNomTypePropriete();
 		locationRepository.save(location);
 		System.out.println(locationRepository.findAll());
-		System.out.println(option);
 		return "redirect:/admin/creerlocation";
 		
 	}
