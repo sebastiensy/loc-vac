@@ -41,6 +41,15 @@ public class TypeLit {
 	
 	@ManyToMany(mappedBy="typeLits")
 	private List<Chambre> chambres;
+
+	public List<Chambre> getChambres() {
+		return chambres;
+	}
+
+	public void setChambres(List<Chambre> chambres) {
+		this.chambres = chambres;
+	}
+	
 	
 
 }

@@ -79,6 +79,12 @@ public class User {
 		return "User [idUser=" + idUser + ", nomUser=" + nomUser + ", prenomUser=" + prenomUser + ", emailUser="
 				+ emailUser + ", mdpUser=" + mdpUser + ", telUser=" + telUser + ", reserver=" + reserver + "]";
 	}
+	public List<Reserver> getReserver() {
+		return reserver;
+	}
+	public void setReserver(List<Reserver> reserver) {
+		this.reserver = reserver;
+	}
 	
 	
 }

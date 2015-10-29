@@ -45,6 +45,14 @@ public class TypePropriete {
 	public String toString() {
 		return "TypePropriete [idTypeProp=" + idTypeProp + ", nomTypePropriete=" + nomTypePropriete + "]";
 	}
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
 	
 	
 	

@@ -40,6 +40,13 @@ public class DateDispo {
 	
 	@ManyToOne
 	private Location locationDateDispo;
+
+	public Location getLocationDateDispo() {
+		return locationDateDispo;
+	}
+	public void setLocationDateDispo(Location locationDateDispo) {
+		this.locationDateDispo = locationDateDispo;
+	}
 	
 	
 	

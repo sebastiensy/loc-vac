@@ -54,6 +54,22 @@ public class Reserver {
 
 	@ManyToOne
 	private User userReserver;
+
+
+
+	public Location getLocationReserver() {
+		return locationReserver;
+	}
+	public void setLocationReserver(Location locationReserver) {
+		this.locationReserver = locationReserver;
+	}
+	public User getUserReserver() {
+		return userReserver;
+	}
+	public void setUserReserver(User userReserver) {
+		this.userReserver = userReserver;
+	}
+	
 	
 	
 }

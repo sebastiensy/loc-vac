@@ -50,6 +50,16 @@ public class Equipement {
 	public String toString() {
 		return "Equipement [idEquipement=" + idEquipement + ", nomEquipement=" + nomEquipement + "]";
 	}
+
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
 	
 	
 	

@@ -37,4 +37,22 @@ public class Chambre  {
 	@ManyToOne
 	private Location locationChambre;
 
+	public List<TypeLit> getTypeLits() {
+		return typeLits;
+	}
+
+	public void setTypeLits(List<TypeLit> typeLits) {
+		this.typeLits = typeLits;
+	}
+
+	public Location getLocationChambre() {
+		return locationChambre;
+	}
+
+	public void setLocationChambre(Location locationChambre) {
+		this.locationChambre = locationChambre;
+	}
+	
+	
+
 }
