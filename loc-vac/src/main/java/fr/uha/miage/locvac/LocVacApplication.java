@@ -119,6 +119,19 @@ public class LocVacApplication implements CommandLineRunner {
 		locationRepository.save(belleAuberge);
 		
 		
+		// création de location dans le repository
+		Location laCabanedeReve = new Location();
+		laCabanedeReve.setNomLocation("La cabane de reve");
+		laCabanedeReve.setCapaciteLocation(4);
+		laCabanedeReve.setVilleLocation("Lille");
+		laCabanedeReve.setPaysLocation("France");
+		laCabanedeReve.setAdresseLocation("Rue de Lesquin");
+		laCabanedeReve.setCodePostalLocation(59000);
+		laCabanedeReve.setPrixLocation(17.5);
+		laCabanedeReve.setTypePropriete(appartement);
+		locationRepository.save(laCabanedeReve);
+		
+		
 		
 		
 	}
