@@ -20,6 +20,7 @@ import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.model.User;
 import fr.uha.miage.locvac.repository.EquipementRepository;
+import fr.uha.miage.locvac.repository.LocationRepository;
 import fr.uha.miage.locvac.repository.TypeLitRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
@@ -36,14 +37,15 @@ public class AdminController {
 	
 	@Autowired
 	private TypeSdbRepository typeSdbRepository;
-
 	
 	@Autowired
 	private TypeLitRepository typeLitRepository;
 	
-	
 	@Autowired
 	private UserRepository UserRepository;
+	
+	@Autowired
+	private LocationRepository locationRepository;
 	
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
@@ -95,6 +97,15 @@ public class AdminController {
 		
         return "/admin/creerlocation";
     }
+	
+	// pour creer une location
+	@RequestMapping(value="/admin/creerlocation", method=RequestMethod.POST)
+	public String creerLocation(Location location) {
+		locationRepository.save(location);
+		System.out.println(locationRepository.findAll());
+		return "redirect:/admin/creerlocation";
+		
+	}
 	
 	// pour afficher les locations
 	@RequestMapping("/admin/afficherlocations")

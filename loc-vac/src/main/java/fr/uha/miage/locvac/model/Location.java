@@ -3,6 +3,7 @@ package fr.uha.miage.locvac.model;
 import fr.uha.miage.locvac.model.TypePropriete;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -109,24 +110,38 @@ public class Location {
 	
 	// location dans la classe equipement
 	@ManyToMany(mappedBy="locations")
-	private Collection<Equipement> equipements;
+	private List<Equipement> equipements;
 	
 	// location dans la classe typeSdb
 	@ManyToMany(mappedBy="locations")
-	private Collection<TypeSdb> typeSdbs;
+	private List<TypeSdb> typeSdbs;
 	
 	//chambres
 	@OneToMany(mappedBy="locationChambre")
-	private Collection<Chambre> chambres;
+	private List<Chambre> chambres;
 	
 	//date dispo
 	@OneToMany(mappedBy="locationDateDispo")
-	private Collection<DateDispo> dateDispo;
+	private List<DateDispo> dateDispo;
 	
 	
 	//reserver
 	@OneToMany(mappedBy="locationReserver")
-	private Collection<Reserver> reserver;
+	private List<Reserver> reserver;
+
+
+
+	@Override
+	public String toString() {
+		return "Location [idLocation=" + idLocation + ", nomLocation=" + nomLocation + ", capaciteLocation="
+				+ capaciteLocation + ", villeLocation=" + villeLocation + ", paysLocation=" + paysLocation
+				+ ", adresseLocation=" + adresseLocation + ", codePostalLocation=" + codePostalLocation
+				+ ", prixLocation=" + prixLocation + ", descriptionLocation=" + descriptionLocation + ", typePropriete="
+				+ typePropriete + ", equipements=" + equipements + ", typeSdbs=" + typeSdbs + ", chambres=" + chambres
+				+ ", dateDispo=" + dateDispo + ", reserver=" + reserver + "]";
+	}
+	
+	
 	
 	
 	
