@@ -82,6 +82,11 @@ public class AdminController {
 		// pour afficher la liste des types de propriete
 		List<TypePropriete> typeProprietes = (List<TypePropriete>) typeProprieteRepository.findAll();
 		model.addAttribute("typeProprietes", typeProprietes);
+		
+		// pour afficher la liste des types de salle de bain
+		List<TypeSdb> typeSdbs = (List<TypeSdb>) typeSdbRepository.findAll();
+		model.addAttribute("typeSdbs", typeSdbs);
+		
         return "/admin/creerlocation";
     }
 	
