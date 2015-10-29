@@ -112,7 +112,7 @@ public class AdminController {
 	// pour creer une location
 	@RequestMapping(value="/admin/creerlocation", method=RequestMethod.POST)
 	public String creerLocation(Location location) {
-		
+		 
 		locationRepository.save(location);
 		System.out.println(locationRepository.findAll());
 		return "redirect:/admin/creerlocation";
