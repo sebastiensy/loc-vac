@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
+import fr.uha.miage.locvac.model.TypeLit;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.repository.EquipementRepository;
+import fr.uha.miage.locvac.repository.TypeLitRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
 
@@ -33,6 +35,10 @@ public class AdminController {
 	@Autowired
 	private TypeSdbRepository typeSdbRepository;
 
+	
+	@Autowired
+	private TypeLitRepository typeLitRepository;
+	
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
         return "/admin/header";
@@ -197,6 +203,51 @@ public class AdminController {
 		typeSdbRepository.delete(idTypeSdb);
 		return "redirect:/admin/typesdb";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * PAGE TYPE LIT
+	 */
+	
+	// pour afficher la page type lit
+	@RequestMapping(value="/admin/typelit", method=RequestMethod.GET)
+    public String afficheTypeLit(Model model) {
+		
+		// pour initialiser le formulaire
+		model.addAttribute("typeLit", new TypeLit());
+			
+		// pour afficher dans le tableau la liste des types de lits 
+		List<TypeLit> typeLits = (List<TypeLit>) typeLitRepository.findAll();
+		model.addAttribute("typeLits", typeLits);
+        return "/admin/typelit";
+    }
+	
+	// pour sauvegarder un type de lit dans le repository
+	@RequestMapping(value="/admin/typelit", method=RequestMethod.POST)
+    public String sauveTypeLit(TypeLit typeLit) {
+		
+		typeLitRepository.save(typeLit);
+		System.out.println(typeLitRepository.findAll());
+		return "redirect:/admin/typelit";
+    }
+	
+	// pour pouvoir supprimer un type de lit grâce à son id
+	@RequestMapping("/supprimerTypeLit/{idTypeLit}")
+	public String supprimeTypeLit(@PathVariable("idTypeLit") Integer idTypeLit) {
+		
+		typeLitRepository.delete(idTypeLit);
+		return "redirect:/admin/typelit";
+	}
+	
+	
+	
+	
 
 }
 
