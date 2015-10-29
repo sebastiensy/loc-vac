@@ -140,6 +140,44 @@ public class Location {
 				+ typePropriete + ", equipements=" + equipements + ", typeSdbs=" + typeSdbs + ", chambres=" + chambres
 				+ ", dateDispo=" + dateDispo + ", reserver=" + reserver + "]";
 	}
+	public TypePropriete getTypePropriete() {
+		return typePropriete;
+	}
+	public void setTypePropriete(TypePropriete typePropriete) {
+		this.typePropriete = typePropriete;
+	}
+	public List<Equipement> getEquipements() {
+		return equipements;
+	}
+	public void setEquipements(List<Equipement> equipements) {
+		this.equipements = equipements;
+	}
+	public List<TypeSdb> getTypeSdbs() {
+		return typeSdbs;
+	}
+	public void setTypeSdbs(List<TypeSdb> typeSdbs) {
+		this.typeSdbs = typeSdbs;
+	}
+	public List<Chambre> getChambres() {
+		return chambres;
+	}
+	public void setChambres(List<Chambre> chambres) {
+		this.chambres = chambres;
+	}
+	public List<DateDispo> getDateDispo() {
+		return dateDispo;
+	}
+	public void setDateDispo(List<DateDispo> dateDispo) {
+		this.dateDispo = dateDispo;
+	}
+	public List<Reserver> getReserver() {
+		return reserver;
+	}
+	public void setReserver(List<Reserver> reserver) {
+		this.reserver = reserver;
+	}
+	
+	
 	
 	
 	

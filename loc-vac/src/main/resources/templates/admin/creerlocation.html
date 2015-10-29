@@ -261,8 +261,8 @@
                             
                             <div class="form-group">
                                 <label>Type de propriété</label>
-                                <select class="form-control" >
-                                    <option th:each=" typePropriete : ${typeProprietes}" th:text="${typePropriete.nomTypePropriete}"></option>
+                                <select class="form-control" th:field="*{typePropriete}">
+                                    <option th:each=" typePropriete : ${typeProprietes}" th:text="${typePropriete.nomTypePropriete}" th:value="${typePropriete.idTypeProp}" ></option>
                                 </select>
                             </div>
                             
