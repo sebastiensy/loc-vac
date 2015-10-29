@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.TypePropriete;
+import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
+import fr.uha.miage.locvac.repository.TypeSdbRepository;
 
 @Controller
 public class AdminController {
@@ -26,6 +28,9 @@ public class AdminController {
 	
 	@Autowired
 	private TypeProprieteRepository typeProprieteRepository;
+	
+	@Autowired
+	private TypeSdbRepository typeSdbRepository;
 
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
@@ -154,6 +159,40 @@ public class AdminController {
 		return "redirect:/admin/typeproprietes";
 	}
 	
+	
+	/*
+	 * PAGE TYPE SALLE DE BAIN
+	 */
+	
+	// pour afficher la page type proprietes
+	@RequestMapping(value="/admin/typesdb", method=RequestMethod.GET)
+    public String afficheTypeSdb(Model model) {
+		
+		// pour initialiser le formulaire
+		model.addAttribute("typeSdb", new TypeSdb());
+			
+		// pour afficher dans le tableau la liste des types proprietes
+		List<TypeSdb> typeSdbs = (List<TypeSdb>) typeSdbRepository.findAll();
+		model.addAttribute("typeSdbs", typeSdbs);
+        return "/admin/typesdb";
+    }
+	
+	// pour sauvegarder un type de propriete dans le repository
+	@RequestMapping(value="/admin/typesdb", method=RequestMethod.POST)
+    public String sauveTypeSdb(TypeSdb typeSdb) {
+		
+		typeSdbRepository.save(typeSdb);
+		System.out.println(typeSdbRepository.findAll());
+		return "redirect:/admin/typesdb";
+    }
+	
+	// pour pouvoir supprimer un type de propriete grâce à son id
+	@RequestMapping("/supprimerTypeSdb/{idTypeSdb}")
+	public String supprimeTypeSdb(@PathVariable("idTypeSdb") Integer idTypeSdb) {
+		
+		typeSdbRepository.delete(idTypeSdb);
+		return "redirect:/admin/typesdb";
+	}
 
 }
 

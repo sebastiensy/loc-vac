@@ -38,6 +38,14 @@ public class TypeSdb {
 	}
 	
 	
+	
+	@Override
+	public String toString() {
+		return "TypeSdb [idTsdb=" + idTsdb + ", nomTsdb=" + nomTsdb + ", locations=" + locations + "]";
+	}
+
+
+
 	@ManyToMany
 	private Collection<Location> locations;
 	
