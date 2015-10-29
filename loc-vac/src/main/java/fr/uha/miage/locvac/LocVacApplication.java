@@ -7,10 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import aj.org.objectweb.asm.Type;
 import fr.uha.miage.locvac.model.Equipement;
+import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.TypeLit;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.repository.EquipementRepository;
+import fr.uha.miage.locvac.repository.LocationRepository;
 import fr.uha.miage.locvac.repository.TypeLitRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
@@ -29,6 +31,11 @@ public class LocVacApplication implements CommandLineRunner {
 	
 	@Autowired
 	private TypeLitRepository typeLitRepository;
+	
+	
+	@Autowired
+	private LocationRepository locationRepository;
+	
 	
 	public static void main(String[] args) {
         SpringApplication.run(LocVacApplication.class, args);
@@ -96,6 +103,20 @@ public class LocVacApplication implements CommandLineRunner {
 		typeLitRepository.save(litsimple);
 		typeLitRepository.save(litdouble);
 		typeLitRepository.save(litsuperpose);
+		
+		
+		
+		// création de location dans le repository
+		Location belleAuberge = new Location();
+		belleAuberge.setNomLocation("A la belle auberge");
+		belleAuberge.setCapaciteLocation(2);
+		belleAuberge.setVilleLocation("Mulhouse");
+		belleAuberge.setPaysLocation("France");
+		belleAuberge.setAdresseLocation("Rue de la tour");
+		belleAuberge.setCodePostalLocation(68100);
+		belleAuberge.setPrixLocation(12.5);
+		locationRepository.save(belleAuberge);
+		
 		
 		
 		
