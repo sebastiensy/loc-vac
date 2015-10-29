@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
+import fr.uha.miage.locvac.model.Reserver;
 import fr.uha.miage.locvac.model.TypeLit;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.model.User;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.LocationRepository;
+import fr.uha.miage.locvac.repository.ReserverRepository;
 import fr.uha.miage.locvac.repository.TypeLitRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
@@ -42,10 +44,15 @@ public class AdminController {
 	private TypeLitRepository typeLitRepository;
 	
 	@Autowired
-	private UserRepository UserRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
 	private LocationRepository locationRepository;
+	
+	
+	@Autowired
+	private ReserverRepository reserverRepository;
+	
 	
 	/*@RequestMapping("/admin/header")
     public String afficheHeaderAdmin() {
@@ -271,10 +278,6 @@ public class AdminController {
 	
 	
 	
-	
-	
-	
-	
 	/*
 	 * PAGE UTILISATEUR 
 	 */
@@ -284,13 +287,34 @@ public class AdminController {
     public String afficheUser(Model model) {
 		
 		// pour initialiser le formulaire
-		model.addAttribute("user", new User());
+		//model.addAttribute("user", new User());
 			
 		// pour afficher dans le tableau la liste des utilisateurs 
-		List<User> users = (List<User>) UserRepository.findAll();
+		List<User> users = (List<User>) userRepository.findAll();
 		model.addAttribute("users", users);
         return "/admin/tableusers";
     }
+	
+	
+	
+	
+	/*
+	 * PAGE UTILISATEUR 
+	 */
+	
+	// pour afficher la page user
+	@RequestMapping(value="/admin/reservation", method=RequestMethod.GET)
+    public String afficheReservation(Model model) {
+		
+		// pour initialiser le formulaire
+		//model.addAttribute("reserver", new Reserver());
+			
+		// pour afficher dans le tableau la liste des utilisateurs 
+		List<Reserver> reservers = (List<Reserver>) reserverRepository.findAll();
+		model.addAttribute("reservers", reservers);
+        return "/admin/reservation";
+    }
+	
 	
 	
 	
