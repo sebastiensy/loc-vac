@@ -115,6 +115,7 @@ public class LocVacApplication implements CommandLineRunner {
 		belleAuberge.setAdresseLocation("Rue de la tour");
 		belleAuberge.setCodePostalLocation(68100);
 		belleAuberge.setPrixLocation(12.5);
+		belleAuberge.setTypePropriete(hotel);
 		locationRepository.save(belleAuberge);
 		
 		
