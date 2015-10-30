@@ -152,7 +152,7 @@
                     <li>
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> Location <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
@@ -180,7 +180,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Utilisateur <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
@@ -238,46 +238,53 @@
 
                 <div class="row">
                     
-                        <h2>Réservations</h2>
+                        <h2>Locations</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-	                                    <th>Id Reservation</th>
-                                        <th>Date début</th>
-                                        <th>Date fin</th>
-                                        <th>Prix</th>
-                                        <th>Id du logement</th>
-                                        <th>Nom du logement</th>
-                                        <th>Id de l'utilisateur</th>
-                                        <th>Nom de l'utilisateur</th>
-                                        <th>Prénom de l'utilisateur</th>
-                                        <th>Supprimer</th>
+	                                    <th>Id Location</th>
+                                        <th>Nom</th>
+                                        <th>Capacite</th>
+                                        <th>Adresse</th>
+                                        <th>Code postal</th>
+                                        <th>Ville</th>
+                                        <th>Pays</th>
+                                        <th>Prix (en euros)</th>
+                                        <th>Type de propriété</th>
                                         
-                                   </tr>
+                                        <th>Modifer</th>
+                                        <th>Supprimer</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                      
-   									<tr th:each=" reserver : ${reservers}" >
-                                   		<td th:text="${reserver.idReserver}" />
-                                       	<td th:text="${reserver.dateDebutReserver}" />
-                                       	<td th:text="${reserver.dateFinReserver}" />
-                                       	<td th:text="${reserver.prixReserver}" />
-                                       	<td th:text="${reserver.locationReserver.idLocation}" />
-                                       	<td th:text="${reserver.locationReserver.nomLocation}" />
-                                       	<td th:text="${reserver.userReserver.idUser}" />
-                                       	<td th:text="${reserver.userReserver.nomUser}" />
-                                       	<td th:text="${reserver.userReserver.prenomUser}" />
-                                       	<td>
-											<a th:href="@{'/supprimerReserver/'+${reserver.idReserver}}">Supprimer</a>
-										</td> 
+                          	         <tr th:each=" location : ${locations}" >
+                            	   		<td th:text="${location.idLocation}" />
+                                       	<td th:text="${location.nomLocation}" />
+                                       	<td th:text="${location.capaciteLocation}" />
+                                   		<td th:text="${location.adresseLocation}" />
+                                   		<td th:text="${location.codePostalLocation}" />
+                                      	<td th:text="${location.villeLocation}" />
+                                		<td th:text="${location.paysLocation}" />
+                                        <td th:text="${location.prixLocation}" />
+                                        <td th:text="${location.typePropriete.nomTypePropriete}" />
+                                          
+                                        <td>Modifier</td>
+                                        <td>Supprimer</td>                                    	
                                    	</tr>	
    
+                               
+                                    
+                                    
+                                  
                                 </tbody>
                             </table>
                         </div>
+                   
+                        
                   
-                                 
+              
+              
                 </div>
                 <!-- /.row -->
 

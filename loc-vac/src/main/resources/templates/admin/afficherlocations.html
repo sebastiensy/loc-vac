@@ -270,7 +270,9 @@
                                         <td th:text="${location.typePropriete.nomTypePropriete}" />
                                           
                                         <td>Modifier</td>
-                                        <td>Supprimer</td>                                    	
+                                        <td>
+											<a th:href="@{'/supprimerLocation/'+${location.idLocation}}">Supprimer</a>
+										</td>                                   	
                                    	</tr>	
    
                                     

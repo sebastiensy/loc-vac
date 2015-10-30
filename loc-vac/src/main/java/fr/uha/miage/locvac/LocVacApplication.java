@@ -1,21 +1,32 @@
 package fr.uha.miage.locvac;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import aj.org.objectweb.asm.Type;
+import fr.uha.miage.locvac.model.Chambre;
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
+import fr.uha.miage.locvac.model.Reserver;
 import fr.uha.miage.locvac.model.TypeLit;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
+import fr.uha.miage.locvac.model.User;
+import fr.uha.miage.locvac.repository.ChambreRepository;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.LocationRepository;
+import fr.uha.miage.locvac.repository.ReserverRepository;
 import fr.uha.miage.locvac.repository.TypeLitRepository;
 import fr.uha.miage.locvac.repository.TypeProprieteRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
+import fr.uha.miage.locvac.repository.UserRepository;
 
 @SpringBootApplication
 public class LocVacApplication implements CommandLineRunner {
@@ -35,6 +46,16 @@ public class LocVacApplication implements CommandLineRunner {
 	
 	@Autowired
 	private LocationRepository locationRepository;
+	
+	@Autowired
+	private ChambreRepository chambreRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private ReserverRepository reserverRepository;
+	
 	
 	
 	public static void main(String[] args) {
@@ -106,17 +127,52 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		
+		
+		/*
+		 * 
+		 * ajout d'une location
+		 * 
+		 */
+		
+		//creation d'une chambre assossié a la location
+		Chambre chambreAuberge = new Chambre();
+		int idchambreAuberge = chambreAuberge.getIdChambre();
+		
+		// ajout d'une liste de lit disponible dans la location
+		List<TypeLit> lits = new ArrayList<>();
+		lits.add(litsuperpose);
+		lits.add(litsimple);
+		
+		chambreAuberge.setTypeLits(lits);
+			
+		chambreRepository.save(chambreAuberge);
+		
+		
 		// création de location dans le repository
 		Location belleAuberge = new Location();
 		belleAuberge.setNomLocation("A la belle auberge");
-		belleAuberge.setCapaciteLocation(2);
+		belleAuberge.setCapaciteLocation(3);
 		belleAuberge.setVilleLocation("Mulhouse");
 		belleAuberge.setPaysLocation("France");
 		belleAuberge.setAdresseLocation("Rue de la tour");
 		belleAuberge.setCodePostalLocation(68100);
 		belleAuberge.setPrixLocation(12.5);
 		belleAuberge.setTypePropriete(hotel);
+		
+		//ajout de la chambre a cette location
+		List<Chambre> chambres = new ArrayList<>();
+		chambres.add(chambreAuberge);
+		belleAuberge.setChambres(chambres);
+		
+		//sauvegarde
 		locationRepository.save(belleAuberge);
+		
+		
+		/*
+		 * 
+		 * Ajout d'une location
+		 * 
+		 */
 		
 		
 		// création de location dans le repository
@@ -130,6 +186,100 @@ public class LocVacApplication implements CommandLineRunner {
 		laCabanedeReve.setPrixLocation(17.5);
 		laCabanedeReve.setTypePropriete(appartement);
 		locationRepository.save(laCabanedeReve);
+		
+		
+		
+		
+		
+		
+		/*
+		 * 
+		 * ajout d'un utilisateur
+		 * 
+		 */
+		
+		
+		
+		
+		// création de user dans le repository
+		User user1 = new User();
+		user1.setNomUser("Sy");
+		user1.setPrenomUser("Sebastien");
+		user1.setEmailUser("Sebastien.sy@gmail.com");
+		user1.setMdpUser("azzz");
+		user1.setTelUser("0794032345");
+
+		
+		//sauvegarde
+		userRepository.save(user1);
+		
+		
+		/*
+		 * 
+		 * ajout d'un utilisateur
+		 * 
+		 */
+			
+		
+		
+		// création de user dans le repository
+		User user2 = new User();
+		user2.setNomUser("Wazan");
+		user2.setPrenomUser("Julien");
+		user2.setEmailUser("julienwazn@gmail.com");
+		user2.setMdpUser("azzz");
+		user2.setTelUser("0642344345");
+
+		
+		//sauvegarde
+		userRepository.save(user2);
+		
+		
+		
+		
+		/*
+		 * 
+		 * ajout d'une reservation
+		 * 
+		 */
+		
+		
+		//creation d'une date
+		Date dateDebutReserv = new Date();
+		Date dateFinReserv= new Date();
+		
+		//creation de l'objet reservation
+		Reserver reservation1 = new Reserver();
+		reservation1.setDateDebutReserver(dateDebutReserv);
+		reservation1.setDateFinReserver(dateFinReserv);
+		reservation1.setLocationReserver(laCabanedeReve);
+		reservation1.setPrixReserver(124);
+		reservation1.setUserReserver(user1);
+		
+		//sauvegarde
+		reserverRepository.save(reservation1);
+		
+		
+		
+		/*
+		 * 
+		 * ajout d'une seconde reservation
+		 * 
+		 */
+		
+		
+		//creation de l'objet reservation
+		Reserver reservation2 = new Reserver();
+		reservation2.setDateDebutReserver(dateDebutReserv);
+		reservation2.setDateFinReserver(dateFinReserv);
+		reservation2.setLocationReserver(belleAuberge);
+		reservation2.setPrixReserver(144);
+		reservation2.setUserReserver(user2);
+		
+		//sauvegarde
+		reserverRepository.save(reservation2);
+		
+		
 		
 		
 		

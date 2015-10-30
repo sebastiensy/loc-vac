@@ -320,6 +320,14 @@ public class AdminController {
         return "/admin/reservation";
     }
 	
+	// pour pouvoir supprimer une reservation grâce à son id
+	@RequestMapping("/supprimerReserver/{idReserver}")
+	public String supprimeReserver(@PathVariable("idReserver") Integer idReserver) {
+		
+		reserverRepository.delete(idReserver);
+		return "redirect:/admin/reservation";
+	}
+	
 	
 	
 	/*
@@ -338,6 +346,14 @@ public class AdminController {
 		model.addAttribute("locations", locations);
         return "/admin/afficherlocations";
     }
+	
+	// pour pouvoir supprimer une location grâce à son id
+	@RequestMapping("/supprimerLocation/{idLocation}")
+	public String supprimeLocation(@PathVariable("idLocation") Integer idLocation) {
+		
+		locationRepository.delete(idLocation);
+		return "redirect:/admin/afficherlocations";
+	}
 	
 	
 	

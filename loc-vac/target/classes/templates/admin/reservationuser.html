@@ -243,15 +243,16 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                    	<th>Nom de l'utilisateur</th>
+                                        <th>Prénom de l'utilisateur</th>
+                                    
 	                                    <th>Id Reservation</th>
                                         <th>Date début</th>
                                         <th>Date fin</th>
                                         <th>Prix</th>
                                         <th>Id du logement</th>
                                         <th>Nom du logement</th>
-                                        <th>Id de l'utilisateur</th>
-                                        <th>Nom de l'utilisateur</th>
-                                        <th>Prénom de l'utilisateur</th>
+                                        
                                         <th>Supprimer</th>
                                         
                                    </tr>
@@ -259,21 +260,21 @@
                                 <tbody>
                       
    									<tr th:each=" reserver : ${reservers}" >
+   									
+   										<td th:text="${reserver.userReserver.nomUser}" />
+                                       	<td th:text="${reserver.userReserver.prenomUser}" />
+   									
                                    		<td th:text="${reserver.idReserver}" />
                                        	<td th:text="${reserver.dateDebutReserver}" />
                                        	<td th:text="${reserver.dateFinReserver}" />
                                        	<td th:text="${reserver.prixReserver}" />
                                        	<td th:text="${reserver.locationReserver.idLocation}" />
                                        	<td th:text="${reserver.locationReserver.nomLocation}" />
-                                       	<td th:text="${reserver.userReserver.idUser}" />
-                                       	<td th:text="${reserver.userReserver.nomUser}" />
-                                       	<td th:text="${reserver.userReserver.prenomUser}" />
                                        	<td>
 											<a th:href="@{'/supprimerReserver/'+${reserver.idReserver}}">Supprimer</a>
 										</td> 
                                    	</tr>	
-   
-                                </tbody>
+   	                          </tbody>
                             </table>
                         </div>
                   

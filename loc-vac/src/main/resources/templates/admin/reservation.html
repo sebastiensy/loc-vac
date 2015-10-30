@@ -238,7 +238,7 @@
 
                 <div class="row">
                     
-                        <h2>Utilisateurs</h2>
+                        <h2>Réservations</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -252,6 +252,7 @@
                                         <th>Id de l'utilisateur</th>
                                         <th>Nom de l'utilisateur</th>
                                         <th>Prénom de l'utilisateur</th>
+                                        <th>Supprimer</th>
                                         
                                    </tr>
                                 </thead>
@@ -264,10 +265,12 @@
                                        	<td th:text="${reserver.prixReserver}" />
                                        	<td th:text="${reserver.locationReserver.idLocation}" />
                                        	<td th:text="${reserver.locationReserver.nomLocation}" />
-                                       	<td th:text="${reserver.locationReserver.idLocation}" />
                                        	<td th:text="${reserver.userReserver.idUser}" />
                                        	<td th:text="${reserver.userReserver.nomUser}" />
                                        	<td th:text="${reserver.userReserver.prenomUser}" />
+                                       	<td>
+											<a th:href="@{'/supprimerReserver/'+${reserver.idReserver}}">Supprimer</a>
+										</td> 
                                    	</tr>	
    
                                 </tbody>
