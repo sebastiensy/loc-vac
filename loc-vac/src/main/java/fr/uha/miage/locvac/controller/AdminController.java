@@ -88,7 +88,7 @@ public class AdminController {
 	 */
 	
 	// pour afficher la page creerlocation
-	@RequestMapping("/admin/creerlocation")
+	/*@RequestMapping("/admin/creerlocation")
     public String afficheFormCreerLocation(Model model) {
 		
 		// pour intialiser une location
@@ -123,7 +123,7 @@ public class AdminController {
 	@RequestMapping("/admin/afficherlocations")
     public String afficheLocations() {
         return "/admin/afficherlocations";
-    }
+    }*/
 
 	
 	
