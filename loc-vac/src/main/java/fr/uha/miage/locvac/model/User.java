@@ -72,18 +72,18 @@ public class User {
 	
 	//user
 	@OneToMany(mappedBy="userReserver")
-	private List<Reserver> reserver;
+	private List<Reserver> reservers;
 
 	@Override
 	public String toString() {
 		return "User [idUser=" + idUser + ", nomUser=" + nomUser + ", prenomUser=" + prenomUser + ", emailUser="
-				+ emailUser + ", mdpUser=" + mdpUser + ", telUser=" + telUser + ", reserver=" + reserver + "]";
+				+ emailUser + ", mdpUser=" + mdpUser + ", telUser=" + telUser + ", reservers=" + reservers + "]";
 	}
-	public List<Reserver> getReserver() {
-		return reserver;
+	public List<Reserver> getReservers() {
+		return reservers;
 	}
-	public void setReserver(List<Reserver> reserver) {
-		this.reserver = reserver;
+	public void setReservers(List<Reserver> reservers) {
+		this.reservers = reservers;
 	}
 	
 	

@@ -253,7 +253,10 @@
                                 <tbody>
                       
    									<tr th:each=" user : ${users}" >
-                                   		<td th:text="${user.idUser}" />
+                                   		
+                                   		<td>
+											<a th:href="@{'/reservationuser/'+${user.idUser}}" th:text="${user.idUser}" />
+										</td> 
                                        	<td th:text="${user.nomUser}" />
                                        	<td th:text="${user.prenomUser}" />
                                        	<td th:text="${user.emailUser}" />

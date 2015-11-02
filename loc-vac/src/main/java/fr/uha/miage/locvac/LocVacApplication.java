@@ -256,6 +256,12 @@ public class LocVacApplication implements CommandLineRunner {
 		reservation1.setPrixReserver(124);
 		reservation1.setUserReserver(user1);
 		
+		//ajout de la reservation a l'utilisateur
+		List<Reserver> reservationsUser1 = new ArrayList<>();
+		reservationsUser1.add(reservation1);		
+		user2.setReservers(reservationsUser1);
+		
+		
 		//sauvegarde
 		reserverRepository.save(reservation1);
 		
@@ -276,10 +282,19 @@ public class LocVacApplication implements CommandLineRunner {
 		reservation2.setPrixReserver(144);
 		reservation2.setUserReserver(user2);
 		
+		
+		
+		//ajout de la reservation a l'utilisateur
+		List<Reserver> reservations = new ArrayList<>();
+		reservations.add(reservation2);		
+		user2.setReservers(reservations);
+		
+		
+		
+		
 		//sauvegarde
 		reserverRepository.save(reservation2);
-		
-		
+	
 		
 		
 		
