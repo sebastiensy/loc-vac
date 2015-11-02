@@ -159,10 +159,7 @@
                                 <a href="creerlocation.html">Créer une location</a>
                             </li>
                             <li>
-                                <a href="afficherlocations.html">Modifier une location</a>
-                            </li>
-                            <li>
-                                <a href="afficherlocations.html">Supprimer une location</a>
+                                <a href="afficherlocations.html">Afficher les locations</a>
                             </li>
                         </ul>
                     </li>
@@ -170,13 +167,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Réservation <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="#">Créer une réservation</a>
-                            </li>
-                            <li>
-                                <a href="reservations.html">Modifier une réservation</a>
-                            </li>
-                            <li>
-                                <a href="reservations.html">Supprimer une réservation</a>
+                                <a href="reservation.html">Afficher les réservations</a>
                             </li>
                         </ul>
                     </li>
@@ -195,15 +186,10 @@
                         <a href="typeproprietes.html"><i class="fa fa-fw fa-wrench"></i> Type Propriete</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo5"><i class="fa fa-fw fa-arrows-v"></i> Chambre <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo5" class="collapse">
-                            <li>
-                                <a href="creerlocation.html">Créer une chambre</a>
-                            </li>
-                            <li>
-                                <a href="afficherlocations.html">Modifier une chambre</a>
-                            </li>
-                        </ul>
+                        <a href="typelit.html"><i class="fa fa-fw fa-wrench"></i> Type Lit</a>
+                    </li>
+                    <li>
+                        <a href="typesdb.html"><i class="fa fa-fw fa-wrench"></i> Type Salle De Bain</a>
                     </li>
                 </ul>
             </div>
@@ -227,88 +213,49 @@
                 <div class="row">
                     <div class="col-lg-6">
 
-                        <form role="form">
+                        <form role="form" action="#" th:action="@{/admin/creerlocationdatedispo}" th:object="${dateDispo}" method="post">
 
                             <div class="form-group">
-                                <label>Nom</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Capacité</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Pays</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Ville</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Adresse</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Code postal</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Type de propriété</label>
-                                <select class="form-control" >
-                                    <option th:each=" typePropriete : ${typeProprietes}" th:text="${typePropriete.nomTypePropriete}"></option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Prix</label>
-                                <input class="form-control" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Equipements</label>
-                                <label class="checkbox-inline" th:each=" equipement : ${equipements}">
-                                    <input type="checkbox" th:text="${equipement.nomEquipement}"/>
-                                </label>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>Type de salle de bain</label>
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
                                 <label>Date de disponibilité début</label>
-                                <input class="form-control" />
+                                <input type="text" class="form-control" th:field="*{dateDebut}"/>
                             </div>
                             
                             <div class="form-group">
-                                <label>Dates de disponibilité fin</label>
-                                <input class="form-control" />
-                            </div>                                                     
+                                <label>Date de disponibilité fin</label>
+                                <input type="text" class="form-control" th:field="*{dateFin}" />
+                            </div>
+                                                                                 
+                                                              
 
                             <button type="submit" class="btn btn-default">Submit Button</button>
                             <button type="reset" class="btn btn-default">Reset Button</button>
 
                         </form>
 
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+	                                    <th>Id Date disponibilité</th>
+                                        <th>Date disponibilité début</th>
+                                        <th>Date disponibilité fin</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each=" dateDispo : ${dateDispos}" >
+                                   		<td th:text="${dateDispo.idDateDispo}" />
+                                       	<td th:text="${dateDispo.dateDebut}" />
+                                       	<td th:text="${dateDispo.dateFin}" />
+                                       	<td>
+										</td>
+                                   	</tr>	
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     
                 </div>
