@@ -1,5 +1,7 @@
 package fr.uha.miage.locvac.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -18,19 +20,28 @@ public class DateDispo {
 	private Date dateDebut;
 	private Date dateFin;
 	
+	
+	
+	
+
 	public int getIdDateDispo() {
 		return idDateDispo;
 	}
 	public void setIdDateDispo(int idDateDispo) {
 		this.idDateDispo = idDateDispo;
 	}
-	public Date getDateDebut() {
-		return dateDebut;
+	public Date getDateDebut() throws ParseException {
+				return dateDebut;
 	}
+	
+
+	
+	
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
-	public Date getDateFin() {
+	public Date getDateFin() throws ParseException {
+
 		return dateFin;
 	}
 	public void setDateFin(Date dateFin) {
@@ -48,7 +59,4 @@ public class DateDispo {
 		this.locationDateDispo = locationDateDispo;
 	}
 	
-	
-	
-
 }

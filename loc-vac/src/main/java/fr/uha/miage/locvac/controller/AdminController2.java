@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.uha.miage.locvac.model.Chaine;
 import fr.uha.miage.locvac.model.DateDispo;
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
@@ -105,7 +106,8 @@ public class AdminController2 {
 	    public String afficheFormCreerLocationDateDispo(Model model) {
 			
 			// pour intialiser une location
-			model.addAttribute("dateDispo", new DateDispo());
+			model.addAttribute("chaine", new Chaine());
+			
 			
 			// pour afficher dans le tableau la liste des types proprietes
 			List<DateDispo> dateDispos = (List<DateDispo>) dateDispoRepository.findAll();
@@ -116,34 +118,23 @@ public class AdminController2 {
 		
 		// pour sauvegarder un type de propriete dans le repository
 		@RequestMapping(value="/admin/creerlocationdatedispo", method=RequestMethod.POST)
-	    public String sauveDateDispo(DateDispo dateDispo) {
+	    public String sauveDateDispo(Chaine chaine) throws ParseException {
 			
-			Date date1 = dateDispo.getDateDebut();
-			System.out.println("date1 = " + date1);
+		
+					
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
 			
-			String dateInString1 = dateDispo.getDateDebut().toString();
-			System.out.println("date1 string : " + dateInString1);
-			
-			DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.FRANCE);
-			String date1string = df.format(date1);
-			System.out.println("date1 string1 = " + date1string);
-			
-			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-			try {
-
-				Date date = formatter.parse(date1string);
-				System.out.println(date);
-				dateDispo.setDateDebut(date);
-				dateDispoRepository.save(dateDispo);
-
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			Date d = sdf.parse(chaine.getDebut());
+			Date d2 = sdf.parse(chaine.getFin());
 			
 			
-
+			DateDispo dateDispo = new DateDispo();
+			dateDispo.setDateDebut(d);
+			dateDispo.setDateFin(d2);
 			
-			//dateDispoRepository.save(dateDispo);
+					
+			dateDispoRepository.save(dateDispo);
+	
 			return "redirect:/admin/creerlocationdatedispo";
 	    }
 	
