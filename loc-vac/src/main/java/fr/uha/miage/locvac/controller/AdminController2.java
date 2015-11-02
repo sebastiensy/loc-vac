@@ -1,6 +1,11 @@
 package fr.uha.miage.locvac.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -113,7 +118,32 @@ public class AdminController2 {
 		@RequestMapping(value="/admin/creerlocationdatedispo", method=RequestMethod.POST)
 	    public String sauveDateDispo(DateDispo dateDispo) {
 			
-			dateDispoRepository.save(dateDispo);
+			Date date1 = dateDispo.getDateDebut();
+			System.out.println("date1 = " + date1);
+			
+			String dateInString1 = dateDispo.getDateDebut().toString();
+			System.out.println("date1 string : " + dateInString1);
+			
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.FRANCE);
+			String date1string = df.format(date1);
+			System.out.println("date1 string1 = " + date1string);
+			
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			try {
+
+				Date date = formatter.parse(date1string);
+				System.out.println(date);
+				dateDispo.setDateDebut(date);
+				dateDispoRepository.save(dateDispo);
+
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			
+
+			
+			//dateDispoRepository.save(dateDispo);
 			return "redirect:/admin/creerlocationdatedispo";
 	    }
 	
