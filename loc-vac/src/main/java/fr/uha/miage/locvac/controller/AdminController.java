@@ -300,7 +300,14 @@ public class AdminController {
         return "/admin/tableusers";
     }
 	
-	
+	// pour afficher les reservations d'un user
+	@RequestMapping("/admin/reservationuser/{id}")
+	public String afficheReservationUser(@PathVariable("id") Integer idUser, Model model, HttpSession session) {
+		model.addAttribute("user", userRepository.findOne(idUser));
+		model.addAttribute("reservers", userRepository.findOne(idUser).getReservers());
+		session.setAttribute("id", idUser);
+		return "/admin/reservationuser";
+	}
 	
 	
 	/*
