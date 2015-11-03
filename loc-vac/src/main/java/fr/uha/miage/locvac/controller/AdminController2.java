@@ -119,8 +119,14 @@ public class AdminController2 {
 			
 			// pour afficher dans le tableau la liste des types proprietes
 			//List<DateDispo> dateDispos = (List<DateDispo>) dateDispoRepository.findAll();
+			
 			// recuperation de l'id location avec la session
 			int idLoc = (int) session.getAttribute("idLoc");
+			
+			// affichage du nom de locotion courante
+			model.addAttribute("location", locationRepository.findOne(idLoc));
+			
+			// affichage des dates dispos de la location courante
 			List<DateDispo> dateDispos = (List<DateDispo>) locationRepository.findByIdLocation(idLoc).getDateDispo();
 			model.addAttribute("dateDispos", dateDispos);
 			
