@@ -58,5 +58,11 @@ public class DateDispo {
 	public void setLocationDateDispo(Location locationDateDispo) {
 		this.locationDateDispo = locationDateDispo;
 	}
+	@Override
+	public String toString() {
+		return "DateDispo [idDateDispo=" + idDateDispo + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + "]";
+	}
+	
+	
 	
 }

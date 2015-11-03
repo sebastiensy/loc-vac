@@ -69,6 +69,13 @@ public class Reserver {
 	public void setUserReserver(User userReserver) {
 		this.userReserver = userReserver;
 	}
+	/*@Override
+	public String toString() {
+		return "Reserver [idReserver=" + idReserver + ", dateDebutReserver=" + dateDebutReserver + ", dateFinReserver="
+				+ dateFinReserver + ", prixReserver=" + prixReserver + ", locationReserver=" + locationReserver
+				+ ", userReserver=" + userReserver + "]";
+	}*/
+	
 	
 	
 	

@@ -138,7 +138,7 @@ public class Location {
 				+ ", adresseLocation=" + adresseLocation + ", codePostalLocation=" + codePostalLocation
 				+ ", prixLocation=" + prixLocation + ", descriptionLocation=" + descriptionLocation + ", typePropriete="
 				+ typePropriete + ", equipements=" + equipements + ", typeSdbs=" + typeSdbs + ", chambres=" + chambres
-				+ ", dateDispo=" + dateDispo + ", reserver=" + reserver + "]";
+				+ ", dateDispo=" + dateDispo + ", reserver=" + reserver + "] + \n";
 	}
 	public TypePropriete getTypePropriete() {
 		return typePropriete;

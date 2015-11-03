@@ -3,6 +3,7 @@ package fr.uha.miage.locvac.controller;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -93,24 +94,34 @@ public class AdminController2 {
 	
 	// pour creer une location
 	@RequestMapping(value="/admin/creerlocation", method=RequestMethod.POST)
-	public String creerLocation(Location location) {
+	public String creerLocation(Location location, HttpSession session) {
 		 
 		locationRepository.save(location);
-		System.out.println(locationRepository.findAll());
+		
+		// recuperation de l'id location
+		int idLoc = location.getIdLocation();
+		
+		// enregistrement de l'id location en session
+		session.setAttribute("idLoc", idLoc);
+		
+		//System.out.println(locationRepository.findAll());
 		return "redirect:/admin/creerlocationdatedispo";
 		
 	}
 	
 	// pour afficher la page creerlocation
 		@RequestMapping("/admin/creerlocationdatedispo")
-	    public String afficheFormCreerLocationDateDispo(Model model) {
+	    public String afficheFormCreerLocationDateDispo(Model model, HttpSession session) {
 			
 			// pour intialiser une location
 			model.addAttribute("chaine", new Chaine());
 			
 			
 			// pour afficher dans le tableau la liste des types proprietes
-			List<DateDispo> dateDispos = (List<DateDispo>) dateDispoRepository.findAll();
+			//List<DateDispo> dateDispos = (List<DateDispo>) dateDispoRepository.findAll();
+			// recuperation de l'id location avec la session
+			int idLoc = (int) session.getAttribute("idLoc");
+			List<DateDispo> dateDispos = (List<DateDispo>) locationRepository.findByIdLocation(idLoc).getDateDispo();
 			model.addAttribute("dateDispos", dateDispos);
 			
 	        return "/admin/creerlocationdatedispo";
@@ -118,7 +129,7 @@ public class AdminController2 {
 		
 		// pour sauvegarder un type de propriete dans le repository
 		@RequestMapping(value="/admin/creerlocationdatedispo", method=RequestMethod.POST)
-	    public String sauveDateDispo(Chaine chaine) throws ParseException {
+	    public String sauveDateDispo(Chaine chaine, HttpSession session) throws ParseException {
 			
 		
 					
@@ -132,8 +143,21 @@ public class AdminController2 {
 			dateDispo.setDateDebut(d);
 			dateDispo.setDateFin(d2);
 			
-					
+			// recuperation de l'id location avec la session
+			int idLoc = (int) session.getAttribute("idLoc");
+			System.out.println("id loc = " + idLoc);
+			
+			// association de la date dispo avec la location courante
+			dateDispo.setLocationDateDispo(locationRepository.findOne(idLoc));
+			
+			// association de la location avec la date dispo
+			List<DateDispo> listeDateDispo = new ArrayList<>();
+			listeDateDispo.add(dateDispo);
+			locationRepository.findOne(idLoc).setDateDispo(listeDateDispo);
+			
 			dateDispoRepository.save(dateDispo);
+			
+			
 	
 			return "redirect:/admin/creerlocationdatedispo";
 	    }

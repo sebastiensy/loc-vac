@@ -350,6 +350,7 @@ public class AdminController {
 			
 		// pour afficher dans le tableau la liste des locations 
 		List<Location> locations = (List<Location>) locationRepository.findAll(); // demander si 2 fois le mm?
+		System.out.println(locationRepository.findAll());
 		model.addAttribute("locations", locations);
         return "/admin/afficherlocations";
     }
