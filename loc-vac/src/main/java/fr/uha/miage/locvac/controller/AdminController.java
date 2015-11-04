@@ -1,6 +1,9 @@
 package fr.uha.miage.locvac.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.uha.miage.locvac.model.Chaine;
+import fr.uha.miage.locvac.model.Chambre;
+import fr.uha.miage.locvac.model.DateDispo;
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.Reserver;
@@ -365,8 +371,69 @@ public class AdminController {
 	
 	
 	
-		
 	
+	
+	
+	
+	
+	
+	
+	
+	// pour afficher la page creerlocationchambre
+			@RequestMapping("/admin/creerlocationchambre")
+		    public String afficheFormcreerlocationchambre(Model model, HttpSession session) {
+				
+				// pour intialiser une chambre
+				model.addAttribute("chambre", new Chambre());
+				
+				List<TypeLit> typeLits = (List<TypeLit>) typeLitRepository.findAll();
+				model.addAttribute("typeLits", typeLits);
+
+				
+				
+				// recuperation de l'id location avec la session
+				int idLoc = (int) session.getAttribute("idLoc");
+				
+				// affichage du nom de locotion courante
+				model.addAttribute("location", locationRepository.findOne(idLoc));
+				
+				// affichage des dates dispos de la location courante
+				//List<Chambre> chambres = (List<Chambre>) locationRepository.findByIdLocation(idLoc).getChambres();
+				//model.addAttribute("chambres", chambres);
+				return "/admin/creerlocationchambre";
+		    }
+			
+	
+		
+			/*	// pour sauvegarder un type de propriete dans le repository
+			@RequestMapping(value="/admin/creerlocationchambre", method=RequestMethod.POST)
+		    public String sauveDateDispo(Chambre chambre, HttpSession session) {
+				
+				
+	
+				
+				
+				// recuperation de l'id location avec la session
+				int idLoc = (int) session.getAttribute("idLoc");
+				
+				System.out.println("id loc = " + idLoc);
+
+				List<Chambre> chambres = new ArrayList<>();
+				chambres.add(chambre);
+				
+				// association de la date dispo avec la location courante
+				chambre.setLocationChambre(locationRepository.findOne(idLoc));
+				// association de la location avec la date dispo
+				
+				locationRepository.findOne(idLoc).setDateDispo(listeDateDispo);
+				
+				dateDispoRepository.save(dateDispo);
+				
+				
+		
+				return "redirect:/admin/creerlocationdatedispo";
+		    }*/
+		
 
 }
 
