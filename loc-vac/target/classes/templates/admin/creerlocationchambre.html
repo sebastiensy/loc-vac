@@ -219,7 +219,7 @@
                                     <option th:each=" typeLit : ${typeLits}" th:text="${typeLit.nomLit}" th:value="${typeLit.idTypeLit}" ></option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-default">Ajouter </button>
+                            <button type="submit" class="btn btn-default">Ajouter un type de lit </button>
                             <button type="reset" class="btn btn-default">Reset Button</button>
 
                         </form>
@@ -232,12 +232,12 @@
                                 <thead>
                                     <tr>
 	                                    <th>Id Chambre</th>
-                                        <th>Type lit</th>
+                                       <th>type lit</th>
                                      </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each=" chambre : ${chambres}" >
-                                   		<td th:text="${chambre.idChambre}" />
+                                     <tr th:each=" chambre.typeLits : ${chambreTypeLits}" >
+                                   		<td th:text="${chambre.typeLits.nomLit}" />
                                         	<td>
 										</td>
                                    	</tr>	

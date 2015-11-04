@@ -27,6 +27,7 @@ import fr.uha.miage.locvac.model.TypeLit;
 import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.model.User;
+import fr.uha.miage.locvac.repository.ChambreRepository;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.LocationRepository;
 import fr.uha.miage.locvac.repository.ReserverRepository;
@@ -60,6 +61,8 @@ public class AdminController {
 	@Autowired
 	private ReserverRepository reserverRepository;
 	
+	@Autowired
+	private ChambreRepository chambreRepository;
 	
 	
 	
@@ -394,46 +397,58 @@ public class AdminController {
 				// recuperation de l'id location avec la session
 				int idLoc = (int) session.getAttribute("idLoc");
 				
+				// recuperation de l'id chambre
+				int idChambre = (int) session.getAttribute("idChambre");
+
 				// affichage du nom de locotion courante
 				model.addAttribute("location", locationRepository.findOne(idLoc));
 				
-				// affichage des dates dispos de la location courante
-				//List<Chambre> chambres = (List<Chambre>) locationRepository.findByIdLocation(idLoc).getChambres();
-				//model.addAttribute("chambres", chambres);
+				// affichage des chambre de la location courante
+				List<TypeLit> listetypeLits = (List<TypeLit>) chambreRepository.findByIdChambre(idChambre).getTypeLits();
+				model.addAttribute("chambreTypeLits", listetypeLits);
 				return "/admin/creerlocationchambre";
 		    }
 			
 	
 		
-			/*	// pour sauvegarder un type de propriete dans le repository
+			// pour sauvegarder un type lit dans une chambre dans le repository
 			@RequestMapping(value="/admin/creerlocationchambre", method=RequestMethod.POST)
-		    public String sauveDateDispo(Chambre chambre, HttpSession session) {
+		    public String sauveDateDispo(Chambre chambre,TypeLit typeLit, HttpSession session) {
 				
-				
-	
-				
+				// creation id chambre
+				session.setAttribute("idChambre", chambre.getIdChambre());
 				
 				// recuperation de l'id location avec la session
 				int idLoc = (int) session.getAttribute("idLoc");
 				
-				System.out.println("id loc = " + idLoc);
+				//liste de lits
 
+				List<TypeLit> typeLits = new ArrayList<>();
+				
+				//ajouter les lit a la liste
+				typeLits.add(typeLit);
+				// ajoute la liste a la chambre
+				chambre.setTypeLits(typeLits);
+			
 				List<Chambre> chambres = new ArrayList<>();
 				chambres.add(chambre);
 				
-				// association de la date dispo avec la location courante
+				typeLit.setChambres(chambres);
+
+				typeLitRepository.save(typeLit);
+				locationRepository.findOne(idLoc).setChambres(chambres);
+				
+				// association de la chambre avec la location courante
 				chambre.setLocationChambre(locationRepository.findOne(idLoc));
-				// association de la location avec la date dispo
 				
-				locationRepository.findOne(idLoc).setDateDispo(listeDateDispo);
+				// association de la location avec la liste de chambre
+				chambreRepository.save(chambre);
+			
 				
-				dateDispoRepository.save(dateDispo);
 				
-				
-		
-				return "redirect:/admin/creerlocationdatedispo";
-		    }*/
-		
+						
+				return "redirect:/admin/creerlocationchambre";
+		    }
 
 }
 
