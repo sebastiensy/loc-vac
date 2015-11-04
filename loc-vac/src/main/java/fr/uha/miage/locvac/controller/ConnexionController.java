@@ -29,7 +29,19 @@ public class ConnexionController {
 	// bouton submit du formulaire
 	@RequestMapping(value="/connexion", method=RequestMethod.POST)
 	public String formInscriptionSubmit(HttpSession session, @ModelAttribute User user, Model model) {
-		model.addAttribute("user", user);
+		//model.addAttribute("user", user);
+		
+		if (userRepository.findByEmailUserAndMdpUser(user.getEmailUser(), user.getMdpUser()) != null)
+		{
+			System.out.println("ok");
+		}
+		else
+		{
+			System.out.println("pas bon");
+		}
+			
+		
+		
 		return "connexion";
 	}
 }
