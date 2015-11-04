@@ -94,8 +94,18 @@ public class AdminController2 {
 	
 	// pour creer une location
 	@RequestMapping(value="/admin/creerlocation", method=RequestMethod.POST)
-	public String creerLocation(Location location, HttpSession session) {
-		 
+	public String creerLocation(Location location, Equipement equipement, TypeSdb typeSdb, HttpSession session) {
+		
+		// sauvegarder un equipement dans une location
+		List<Equipement> listeEquipements = new ArrayList<>();
+		listeEquipements.add(equipement);
+		System.out.println(location.getEquipements());
+				
+		// sauvegarder un type sdb dans une location
+		List<TypeSdb> listeTypeSdbs = new ArrayList<>();
+		listeTypeSdbs.add(typeSdb);
+		System.out.println(location.getTypeSdbs());
+				
 		locationRepository.save(location);
 		
 		// recuperation de l'id location
@@ -104,8 +114,7 @@ public class AdminController2 {
 		// enregistrement de l'id location en session
 		session.setAttribute("idLoc", idLoc);
 		
-		//System.out.println(locationRepository.findAll());
-		return "redirect:/admin/creerlocationdatedispo";
+		return "redirect:/admin/creerlocationchambre";
 		
 	}
 	

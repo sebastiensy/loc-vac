@@ -272,7 +272,7 @@
                             <div class="form-group">
                                 <label>Type de salle de bain</label>
                                 <label class="checkbox-inline" th:each=" typeSdb : ${typeSdbs}">
-                                    <input type="checkbox" th:text="${typeSdb.nomTsdb}"/>
+                                    <input type="checkbox" th:text="${typeSdb.nomTsdb}" th:field="*{typeSdbs}" th:value="${typeSdb.idTsdb}"/>
                                 </label>
                             </div>
                             
