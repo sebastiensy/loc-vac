@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -205,8 +206,11 @@ public class LocVacApplication implements CommandLineRunner {
 		User user1 = new User();
 		user1.setNomUser("Sy");
 		user1.setPrenomUser("Sebastien");
-		user1.setEmailUser("Sebastien.sy@gmail.com");
-		user1.setMdpUser("azzz");
+		user1.setEmailUser("sebastien.sy@gmail.com");
+		
+		// hashage du mot de passe
+    	String hashed1 = BCrypt.hashpw("azzz", BCrypt.gensalt(12));
+		user1.setMdpUser(hashed1);
 		user1.setTelUser("0794032345");
 
 		
@@ -227,7 +231,10 @@ public class LocVacApplication implements CommandLineRunner {
 		user2.setNomUser("Wazan");
 		user2.setPrenomUser("Julien");
 		user2.setEmailUser("julienwazn@gmail.com");
-		user2.setMdpUser("azzz");
+		
+		// hashage du mot de passe
+    	String hashed2 = BCrypt.hashpw("azzz", BCrypt.gensalt(12));
+		user2.setMdpUser(hashed2);
 		user2.setTelUser("0642344345");
 
 		
