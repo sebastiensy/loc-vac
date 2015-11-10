@@ -3,7 +3,7 @@
 	<head>
 		<title>Voyage Website Template | Home :: w3layouts</title>
 		<link href="../css/style.css" rel='stylesheet' type='text/css' />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<script src="../js/jquery.min.js"></script>
 		<link rel="stylesheet" href="../css/jquery.bxslider.css" type="text/css" />
@@ -48,8 +48,10 @@
 				<div class="wrap">
 				<div class="top-header-left">
 					<ul>
-						<li><span> </span><a class="reg" href="inscription.html">Inscription</a></li>
-						<li><span> </span><a class="reg" href="connexion.html">Se connecter</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="inscription.html">Inscription</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="connexion.html">Connexion</a></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" th:text="'Bienvenue ' + ${session.nomprenom}" /></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" href="deconnexion.html">Déconnexion</a></li>
 						<div class="clear"> </div>
 					</ul>
 				</div>

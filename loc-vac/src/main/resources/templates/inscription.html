@@ -48,8 +48,10 @@
 				<div class="wrap">
 				<div class="top-header-left">
 					<ul>
-						<li><span> </span><a class="reg" href="inscription.html">Inscription</a></li>
-						<li><span> </span><a class="reg" href="connexion.html">Se connecter</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="inscription.html">Inscription</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="connexion.html">Connexion</a></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" th:text="'Bienvenue ' + ${session.nomprenom}" /></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" href="deconnexion.html">Déconnexion</a></li>
 						<div class="clear"> </div>
 					</ul>
 				</div>
@@ -126,19 +128,35 @@
 		<div class="p-ww">
 		<!--  lorsqu'on s'inscrit, on cree un user et on retourne dans la page index -->
 					<form action="#" th:action="@{/inscription}" th:object="${user}" method="post">
-					<p>Nom : </p>
-					<input type="text" th:field="*{nomUser}" ></input>
-					<p>Prénom : </p>
-					<input type="text" th:field="*{prenomUser}" ></input>
-					<p>Email : </p>
-					<input type="text" th:field="*{emailUser}"></input>
-					<p>Mot de passe : </p>
-					<input type="password" name="mdp" th:field="*{mdpUser}"></input>
-					<!-- <p>Date de naissance : </p>
-					<input type="text" name="dnaiss" th:field="*{dateNaissUser}"></input>-->
-					<p>Téléphone : </p>
-					<input type="text" name="tel" th:field="*{telUser}"></input>
-					<input type="submit" value="Valider" />
+						<table>
+							<tr><td><p>Nom : </p></td></tr>
+							<tr><td width="50%"><input style="width:90%;" type="text" th:field="*{nomUser}" ></input></td>
+			                <td width="50%" th:if="${#fields.hasErrors('nomUser')}" th:errors="*{nomUser}">Name error</td></tr>
+							
+							<tr><td><p>Prénom : </p></td></tr>
+							<tr><td width="50%"><input style="width:90%;" type="text" th:field="*{prenomUser}" ></input></td>
+			                <td width="50%" th:if="${#fields.hasErrors('prenomUser')}" th:errors="*{prenomUser}">Name error</td></tr>
+							
+							
+							<tr><td><p>Email : </p></td></tr>
+							<tr><td width="50%"><input style="width:90%;" type="text" th:field="*{emailUser}"></input></td>
+			                <td width="50%" th:if="${#fields.hasErrors('emailUser')}" th:errors="*{emailUser}">Name error</td></tr>
+							
+							
+							<tr><td><p>Mot de passe : </p></td></tr>
+							<tr><td width="50%"><input style="width:90%;" type="password" name="mdp" th:field="*{mdpUser}"></input></td>
+			                <td width="50%" th:if="${#fields.hasErrors('mdpUser')}" th:errors="*{mdpUser}">Name error</td></tr>
+							
+							<!-- <p>Date de naissance : </p>
+							<input type="text" name="dnaiss" th:field="*{dateNaissUser}"></input>-->
+							
+							<tr><td><p>Téléphone : </p></td></tr>
+							<tr><td width="50%"><input style="width:90%;" type="text" name="tel" th:field="*{telUser}"></input></td>
+			                <td width="50%" th:if="${#fields.hasErrors('telUser')}" th:errors="*{telUser}">Name error</td></tr>
+							
+							<tr><td><input type="submit" value="Valider" /></td></tr>
+					
+						</table>
 					</form>
 		</div>
 		<div class="clear"> </div>

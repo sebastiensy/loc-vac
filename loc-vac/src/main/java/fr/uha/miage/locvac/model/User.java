@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -17,7 +18,8 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
 	
-	@Column(length=40)
+	//@Column(length=40)
+	@Size(min=2, max=40)
 	private String nomUser;
 	
 	@Column(length=40)
