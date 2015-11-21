@@ -38,6 +38,22 @@ public class Location {
 	private String adresseLocation;
 	
 	
+	private int superficie;
+	public int getSuperficie() {
+		return superficie;
+	}
+	public void setSuperficie(int superficie) {
+		this.superficie = superficie;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	private String url;
+	
 	private int codePostalLocation;
 	
 	
@@ -131,14 +147,17 @@ public class Location {
 
 
 
+	
+
 	@Override
 	public String toString() {
 		return "Location [idLocation=" + idLocation + ", nomLocation=" + nomLocation + ", capaciteLocation="
 				+ capaciteLocation + ", villeLocation=" + villeLocation + ", paysLocation=" + paysLocation
-				+ ", adresseLocation=" + adresseLocation + ", codePostalLocation=" + codePostalLocation
-				+ ", prixLocation=" + prixLocation + ", descriptionLocation=" + descriptionLocation + ", typePropriete="
-				+ typePropriete + ", equipements=" + equipements + ", typeSdbs=" + typeSdbs + ", chambres=" + chambres
-				+ ", dateDispo=" + dateDispo + ", reserver=" + reserver + "] + \n";
+				+ ", adresseLocation=" + adresseLocation + ", superficie=" + superficie + ", url=" + url
+				+ ", codePostalLocation=" + codePostalLocation + ", prixLocation=" + prixLocation
+				+ ", descriptionLocation=" + descriptionLocation + ", typePropriete=" + typePropriete + ", equipements="
+				+ equipements + ", typeSdbs=" + typeSdbs + ", chambres=" + chambres + ", dateDispo=" + dateDispo
+				+ ", reserver=" + reserver + "]";
 	}
 	public TypePropriete getTypePropriete() {
 		return typePropriete;
