@@ -38,8 +38,8 @@ public class TypeLit {
 	public void setNomLit(String nomLit) {
 		this.nomLit = nomLit;
 	}
-	
-	@ManyToMany(mappedBy="typeLits")
+	//(mappedBy="typeLits")
+	@ManyToMany
 	private List<Chambre> chambres;
 
 	public List<Chambre> getChambres() {

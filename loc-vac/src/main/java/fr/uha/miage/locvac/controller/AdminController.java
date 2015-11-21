@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import aj.org.objectweb.asm.Type;
+import ch.qos.logback.core.net.SyslogOutputStream;
 import fr.uha.miage.locvac.model.Chaine;
 import fr.uha.miage.locvac.model.Chambre;
 import fr.uha.miage.locvac.model.DateDispo;
@@ -405,10 +407,6 @@ public class AdminController {
 			
 		    }
 			
-			
-			
-				
-
 			/*
 			 * Sauvegarder des chambres dans le repository
 			 */
@@ -419,7 +417,7 @@ public class AdminController {
 								
 				// recuperation de l'id location avec la session
 				int idLoc = (int) session.getAttribute("idLoc");
-				System.out.println("id loc = " + idLoc);
+				
 				
 				// association de la date dispo avec la location courante
 				chambre.setLocationChambre(locationRepository.findOne(idLoc));
@@ -430,17 +428,84 @@ public class AdminController {
 				locationRepository.findOne(idLoc).setChambres(chambres);
 				
 				chambreRepository.save(chambre);
-				
-				
-				
-				
-				
-				
-				
-						
 				return "redirect:/admin/creerlocationchambre";
 		    }
+			
+			
+			
+			
+			
+			
+			// page chambrelit affichage
+			@RequestMapping("/admin/creerlocationchambrelit")
+			public String afficheFormcreerlocationchambrelit(Model model, HttpSession session) {
+						
+				// pour intialiser une location
+				model.addAttribute("chambre", new Chambre());
+				
+				// pour intialiser une location
+				model.addAttribute("typeLit", new TypeLit());
+				
+				// recuperation de l'id location avec la session
+				int idLoc = (int) session.getAttribute("idLoc");
+				
+				// affichage du nom de locotion courante
+				model.addAttribute("location", locationRepository.findOne(idLoc));
+				
+				// affichage des chamber de la location courante
+				List<Chambre> chambres = (List<Chambre>) locationRepository.findByIdLocation(idLoc).getChambres();
+				model.addAttribute("chambres", chambres);
+				
+				List<TypeLit> typeLits = (List<TypeLit>) typeLitRepository.findAll();
+				model.addAttribute("typeLits" , typeLits);
+				
+				
+				
+				return "/admin/creerlocationchambrelit";
+			}
+			
+			
+			
+			
+			/*
+			 * Sauvegarder des chambres dans le repository
+			 */
+			@RequestMapping(value="/admin/creerlocationchambrelit", method=RequestMethod.POST)
+		    public String sauveChambreLit(Chambre chambre, TypeLit typeLit,Model model, HttpSession session) {
+				
+			
+				// recuperation de l'id location avec la session
+				int idLoc = (int) session.getAttribute("idLoc");
+				if (chambre.getTypeLits() == null)
+				{
+					List<TypeLit> typeLits = new ArrayList<>();
+				}
+				else
+				{
+					//typeLits.add(typeLit);
+
+
+				}
+					
+				//chambre.setTypeLits(typeLits);
+				System.out.println("la chambre a comme lit " + chambre.getIdChambre());
+				System.out.println("le type lit " + typeLit.getIdTypeLit());
+				
+				System.out.println(chambre.getTypeLits());
+				return "redirect:/admin/creerlocationchambrelit";
+				
+//////////////////////////////////////////////////////////////////////////////////////////
+				//association de la date dispo avec la location courante
+				//chambre.setLocationChambre(locationRepository.findOne(idLoc));
+
+
+				
+				
+				
+				
+		    }
+			
+			
 
 }
-
 
