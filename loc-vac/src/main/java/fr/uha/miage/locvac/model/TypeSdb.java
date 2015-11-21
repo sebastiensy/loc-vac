@@ -42,12 +42,12 @@ public class TypeSdb {
 	
 	@Override
 	public String toString() {
-		return "TypeSdb [idTsdb=" + idTsdb + ", nomTsdb=" + nomTsdb + ", locations=" + locations + "]";
+		return "TypeSdb [idTsdb=" + idTsdb + ", nomTsdb=" + nomTsdb + "]";
 	}
 
 
 
-	@ManyToMany
+	@ManyToMany(mappedBy="typeSdbs")
 	private List<Location> locations;
 
 	public List<Location> getLocations() {

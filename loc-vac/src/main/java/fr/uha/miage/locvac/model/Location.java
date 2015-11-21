@@ -109,11 +109,11 @@ public class Location {
 	private TypePropriete typePropriete;
 	
 	// location dans la classe equipement
-	@ManyToMany(mappedBy="locations")
+	@ManyToMany
 	private List<Equipement> equipements;
 	
 	// location dans la classe typeSdb
-	@ManyToMany(mappedBy="locations")
+	@ManyToMany
 	private List<TypeSdb> typeSdbs;
 	
 	//chambres

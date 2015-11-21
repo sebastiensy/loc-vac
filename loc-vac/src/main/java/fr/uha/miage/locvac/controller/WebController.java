@@ -34,15 +34,9 @@ public class WebController {
     	return "index";
     }
     
-    @RequestMapping("/destinations")
-    public String destionations() {
-    	return "destinations";
-    }
     
-    @RequestMapping("/criuses")
-    public String criuses() {
-    	return "criuses";
-    }
+    
+    
     
     @RequestMapping("/contact")
     public String contact() {

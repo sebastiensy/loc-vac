@@ -165,6 +165,19 @@ public class LocVacApplication implements CommandLineRunner {
 		chambres.add(chambreAuberge);
 		belleAuberge.setChambres(chambres);
 		
+		//ajout d'equipements à cette location
+		List<Equipement> equipements = new ArrayList<>();
+		equipements.add(wifi);
+		equipements.add(tv);
+		belleAuberge.setEquipements(equipements);
+		
+		//ajout de type de sdb à cette location
+		List<TypeSdb> typeSdbs = new ArrayList<>();
+		typeSdbs.add(baignoire);
+		typeSdbs.add(jacuzzi);
+		belleAuberge.setTypeSdbs(typeSdbs);
+		
+		
 		//sauvegarde
 		locationRepository.save(belleAuberge);
 		
@@ -189,9 +202,39 @@ public class LocVacApplication implements CommandLineRunner {
 		locationRepository.save(laCabanedeReve);
 		
 		
+	
 		
+		/*// Location 1
+		List<Location> locations1 = new ArrayList<>();
+		locations1.add(belleAuberge);
 		
+		//tv.setLocations(locations1);
+		//equipementRepository.save(tv);
 		
+		jacuzzi.setLocations(locations1);
+		typeSdbRepository.save(jacuzzi);
+		baignoire.setLocations(locations1);
+		typeSdbRepository.save(baignoire);
+		
+
+		
+		// Location 2
+		List<Location> locations2 = new ArrayList<>();
+		locations2.add(laCabanedeReve);
+		
+				
+		//douche.setLocations(locations2);
+		//typeSdbRepository.save(douche);
+		
+		// Location 1 et 2
+		List<Location> locations3 = new ArrayList<>();
+		locations3.add(belleAuberge);
+		locations3.add(laCabanedeReve);
+		
+		wifi.setLocations(locations3);
+		equipementRepository.save(wifi);*/
+		
+
 		
 		/*
 		 * 

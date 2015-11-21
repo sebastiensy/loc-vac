@@ -42,7 +42,7 @@ public class Equipement {
 		this.nomEquipement = nomEquipement;
 	}
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="equipements")
 	private List<Location> locations;
 
 
