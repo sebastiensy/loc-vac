@@ -184,7 +184,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="destination-places-grid last-d-grid" th:each=" location : ${locationss}">
 							<a th:href="@{'/detaildest/'+${location.idLocation}}">
 							<div class="dest-place-pic main_box user_style4" data-hipop="two-horizontal">
-								<img src="http://fr.hotel-palaciodelmar.com/static/galerias/hotel/01-hotel-santander-sercotel-palacio-del-mar-fachada-foto.jpg" width="343.172" height="257.375"/>
+								<img th:src="${location.url}"/>
 								<a href="#" class="popup"> </a>
 								<a href="#" class="popup2"> </a>
 							</div>

@@ -1,9 +1,11 @@
 package fr.uha.miage.locvac;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import aj.org.objectweb.asm.Type;
 import fr.uha.miage.locvac.model.Chambre;
+import fr.uha.miage.locvac.model.DateDispo;
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.Reserver;
@@ -21,6 +24,7 @@ import fr.uha.miage.locvac.model.TypePropriete;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.model.User;
 import fr.uha.miage.locvac.repository.ChambreRepository;
+import fr.uha.miage.locvac.repository.DateDispoRepository;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.LocationRepository;
 import fr.uha.miage.locvac.repository.ReserverRepository;
@@ -56,6 +60,9 @@ public class LocVacApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ReserverRepository reserverRepository;
+	
+	@Autowired
+	private DateDispoRepository dateDispoRepository;
 	
 	
 	
@@ -159,6 +166,8 @@ public class LocVacApplication implements CommandLineRunner {
 		belleAuberge.setCodePostalLocation(68100);
 		belleAuberge.setPrixLocation(12.5);
 		belleAuberge.setTypePropriete(hotel);
+		belleAuberge.setSuperficie(50);
+		belleAuberge.setUrl("http://media-cdn.tripadvisor.com/media/photo-o/04/07/fa/42/la-belle-victorienne.jpg");
 		
 		//ajout de la chambre a cette location
 		List<Chambre> chambres = new ArrayList<>();
@@ -176,6 +185,38 @@ public class LocVacApplication implements CommandLineRunner {
 		typeSdbs.add(baignoire);
 		typeSdbs.add(jacuzzi);
 		belleAuberge.setTypeSdbs(typeSdbs);
+		
+		
+		
+		
+		/*
+		 * 
+		 * Création de date dispo pour la belle auberge
+		 * 
+		 */
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		df.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+		Date dateAubergeD1 = df.parse("01/12/2015");
+		Date dateAubergeF1 = df.parse("31/12/2015");
+		Date dateAubergeD2 = df.parse("01/01/2016");
+		Date dateAubergeF2 = df.parse("31/12/2016");
+		
+		DateDispo dateAuberge1 = new DateDispo();
+		dateAuberge1.setDateDebut(dateAubergeD1);
+		dateAuberge1.setDateFin(dateAubergeF1);
+		
+		DateDispo dateAuberge2 = new DateDispo();
+		dateAuberge2.setDateDebut(dateAubergeD2);
+		dateAuberge2.setDateFin(dateAubergeF2);
+		
+		List<DateDispo> listeDateDispoAuberge = new ArrayList<>();
+		listeDateDispoAuberge.add(dateAuberge1);
+		listeDateDispoAuberge.add(dateAuberge2);
+		
+		belleAuberge.setDateDispo(listeDateDispoAuberge);
+		
+		dateDispoRepository.save(dateAuberge1);
+		dateDispoRepository.save(dateAuberge2);
 		
 		
 		//sauvegarde
@@ -199,10 +240,48 @@ public class LocVacApplication implements CommandLineRunner {
 		laCabanedeReve.setCodePostalLocation(59000);
 		laCabanedeReve.setPrixLocation(17.5);
 		laCabanedeReve.setTypePropriete(appartement);
-		locationRepository.save(laCabanedeReve);
+		laCabanedeReve.setSuperficie(15);
+		laCabanedeReve.setUrl("http://annie.blogs.marieclaireidees.com/media/01/00/753321507.jpeg");
 		
 		
 	
+		
+		
+		
+		/*
+		 * 
+		 * Création de date dispo pour la cabane de reve
+		 * 
+		 */
+		//DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		df.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+		Date dateCabaneD1 = df.parse("12/12/2015");
+		Date dateCabaneF1 = df.parse("17/12/2015");
+		Date dateCabaneD2 = df.parse("01/01/2016");
+		Date dateCabaneF2 = df.parse("06/01/2016");
+		
+		DateDispo dateCabane1 = new DateDispo();
+		dateCabane1.setDateDebut(dateCabaneD1);
+		dateCabane1.setDateFin(dateCabaneF1);
+		
+		DateDispo dateCabane2 = new DateDispo();
+		dateCabane2.setDateDebut(dateCabaneD2);
+		dateCabane2.setDateFin(dateCabaneF2);
+		
+		List<DateDispo> listeDateDispoCabane = new ArrayList<>();
+		listeDateDispoCabane.add(dateCabane1);
+		listeDateDispoCabane.add(dateCabane2);
+		
+		laCabanedeReve.setDateDispo(listeDateDispoCabane);
+		
+		dateDispoRepository.save(dateCabane1);
+		dateDispoRepository.save(dateCabane2);
+		
+		locationRepository.save(laCabanedeReve);
+
+
+		
+		
 		
 		/*// Location 1
 		List<Location> locations1 = new ArrayList<>();

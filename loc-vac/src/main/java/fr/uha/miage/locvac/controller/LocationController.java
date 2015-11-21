@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.uha.miage.locvac.model.DateDispo;
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.TypeSdb;
 import fr.uha.miage.locvac.repository.ChambreRepository;
+import fr.uha.miage.locvac.repository.DateDispoRepository;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.LocationRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
@@ -33,6 +35,9 @@ public class LocationController {
 	
 	@Autowired
 	private ChambreRepository chambreRepository;
+	
+	@Autowired
+	private DateDispoRepository dateDispoRepository;
 	
 	// pour afficher la page location user
 	@RequestMapping(value="/destinations", method=RequestMethod.GET)
@@ -66,6 +71,10 @@ public class LocationController {
 		// pour afficher le nombre de salle de bain
 		int nbSdb = locationRepository.findOne(idLocation).getTypeSdbs().size();
 		model.addAttribute("nbSdb", nbSdb);
+		
+		// pour afficher la liste des types de sdb
+		List<DateDispo> dateDispos = (List<DateDispo>) locationRepository.findOne(idLocation).getDateDispo();
+		model.addAttribute("dateDispos", dateDispos);
 		
 		System.out.println(locationRepository.findOne(idLocation));
 		return "detaildest";

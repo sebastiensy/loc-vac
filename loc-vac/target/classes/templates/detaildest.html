@@ -186,7 +186,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="criuse-grid-head">
 									<div class="criuse-img">
 										<div class="criuse-pic">
-											<img src="http://fr.hotel-palaciodelmar.com/static/galerias/hotel/01-hotel-santander-sercotel-palacio-del-mar-fachada-foto.jpg" width="1079.19" height="600" title="criuse-name" />
+											<img th:src="${location.url}" title="criuse-name" />
 										</div>
 										<div class="criuse-pic-info">
 												<div class="criuse-pic-info-top">
@@ -204,7 +204,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<ul>
 												<li><a class="c-hotel" href="#" th:text="${location.typePropriete.nomTypePropriete}"><span> </span></a></li>
 												<li><a class="c-air" href="#" th:text="${location.capaciteLocation} + ' personnes'"><span> </span> </a></li>
-												<li><a class="c-fast" href="#"><span> </span> Surface m²</a></li>
+												<li><a class="c-fast" href="#" th:text="${location.superficie} + ' m²'"><span> </span> Surface m²</a></li>
 												<li><a class="c-car" href="#"><span> </span> Car for All transfers</a></li>
 												<div class="clear"> </div>
 											</ul>
@@ -233,6 +233,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     	<input type="checkbox" th:text="${typeSdb.nomTsdb}" th:field="*{typeSdbs}" th:value="${typeSdb.idTsdb}" disabled="disabled"/>
                                		</label></p>
 									<p th:text="${location.descriptionLocation}"></p>
+									
+									<p><table border="1">
+										<tr><td>Du</td><td>Au</td></tr>
+										<tr th:each=" dateDispo : ${dateDispos}"><td th:text="${dateDispo.dateDebut}"></td><td th:text="${dateDispo.dateFin}"></td></tr>
+									</table></p>
+									
+																		
                                		
 									<a class="btn" href="#">Réserver</a>
 								</div>
