@@ -58,10 +58,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="wrap">
 				<div class="top-header-left">
 					<ul>
-						<li><a href="#"><span> </span> Agent Login</a></li>
-						<li><a href="#"><span> </span> Agent Login</a></li>
-						<li><p><span> </span>Not a Member ? </p>&nbsp;<a class="reg" href="#"> Register</a></li>
-						<li><p class="contact-info">Call Us Now :815-123-4567</p></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="inscription.html">Inscription</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="connexion.html">Connexion</a></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" th:text="'Bienvenue ' + ${session.nomprenom}" /></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" href="deconnexion.html">Déconnexion</a></li>
 						<div class="clear"> </div>
 					</ul>
 				</div>

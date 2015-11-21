@@ -194,6 +194,10 @@ public class LocVacApplication implements CommandLineRunner {
 		 * Création de date dispo pour la belle auberge
 		 * 
 		 */
+		
+		//sauvegarde
+		locationRepository.save(belleAuberge);
+				
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		df.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 		Date dateAubergeD1 = df.parse("01/12/2015");
@@ -204,23 +208,25 @@ public class LocVacApplication implements CommandLineRunner {
 		DateDispo dateAuberge1 = new DateDispo();
 		dateAuberge1.setDateDebut(dateAubergeD1);
 		dateAuberge1.setDateFin(dateAubergeF1);
+		dateAuberge1.setLocationDateDispo(belleAuberge);
+
+		
 		
 		DateDispo dateAuberge2 = new DateDispo();
 		dateAuberge2.setDateDebut(dateAubergeD2);
 		dateAuberge2.setDateFin(dateAubergeF2);
+		dateAuberge2.setLocationDateDispo(belleAuberge);
 		
 		List<DateDispo> listeDateDispoAuberge = new ArrayList<>();
 		listeDateDispoAuberge.add(dateAuberge1);
 		listeDateDispoAuberge.add(dateAuberge2);
-		
+
 		belleAuberge.setDateDispo(listeDateDispoAuberge);
-		
 		dateDispoRepository.save(dateAuberge1);
 		dateDispoRepository.save(dateAuberge2);
+
 		
 		
-		//sauvegarde
-		locationRepository.save(belleAuberge);
 		
 		
 		/*
@@ -374,7 +380,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//creation d'une date
-		Date dateDebutReserv = new Date();
+		/*Date dateDebutReserv = new Date();
 		Date dateFinReserv= new Date();
 		
 		//creation de l'objet reservation
@@ -392,7 +398,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//sauvegarde
-		reserverRepository.save(reservation1);
+		reserverRepository.save(reservation1);*/
 		
 		
 		
@@ -404,7 +410,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//creation de l'objet reservation
-		Reserver reservation2 = new Reserver();
+		/*Reserver reservation2 = new Reserver();
 		reservation2.setDateDebutReserver(dateDebutReserv);
 		reservation2.setDateFinReserver(dateFinReserv);
 		reservation2.setLocationReserver(belleAuberge);
@@ -422,7 +428,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//sauvegarde
-		reserverRepository.save(reservation2);
+		reserverRepository.save(reservation2);*/
 	
 		
 		
