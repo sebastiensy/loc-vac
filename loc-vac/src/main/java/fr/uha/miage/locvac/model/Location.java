@@ -136,8 +136,8 @@ public class Location {
 	@OneToMany(mappedBy="locationChambre")
 	private List<Chambre> chambres;
 	
-	//date dispo (mappedBy="locationDateDispo")
-	@OneToMany
+	//date dispo 
+	@OneToMany(mappedBy="locationDateDispo")
 	private List<DateDispo> dateDispo;
 	
 	
