@@ -49,6 +49,12 @@ public class TypeLit {
 	public void setChambres(List<Chambre> chambres) {
 		this.chambres = chambres;
 	}
+
+	@Override
+	public String toString() {
+		return "TypeLit [idTypeLit=" + idTypeLit + ", nomLit=" + nomLit + "]";
+	}
+	
 	
 	
 

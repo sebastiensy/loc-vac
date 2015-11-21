@@ -116,8 +116,8 @@ public class Location {
 	@ManyToMany
 	private List<TypeSdb> typeSdbs;
 	
-	//chambres
-	@OneToMany(mappedBy="locationChambre")
+	//chambres (mappedBy="locationChambre")
+	@OneToMany
 	private List<Chambre> chambres;
 	
 	//date dispo

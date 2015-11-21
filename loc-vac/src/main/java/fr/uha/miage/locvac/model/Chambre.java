@@ -52,6 +52,13 @@ public class Chambre  {
 	public void setLocationChambre(Location locationChambre) {
 		this.locationChambre = locationChambre;
 	}
+
+	@Override
+	public String toString() {
+		return "Chambre [idChambre=" + idChambre + ", typeLits=" + typeLits + "]";
+	}
+	
+	
 	
 	
 

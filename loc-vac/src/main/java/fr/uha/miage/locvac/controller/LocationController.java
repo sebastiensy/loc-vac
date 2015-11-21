@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import fr.uha.miage.locvac.model.Equipement;
 import fr.uha.miage.locvac.model.Location;
 import fr.uha.miage.locvac.model.TypeSdb;
+import fr.uha.miage.locvac.repository.ChambreRepository;
 import fr.uha.miage.locvac.repository.EquipementRepository;
 import fr.uha.miage.locvac.repository.LocationRepository;
 import fr.uha.miage.locvac.repository.TypeSdbRepository;
@@ -30,6 +31,9 @@ public class LocationController {
 	@Autowired
 	private TypeSdbRepository typeSdbRepository;
 	
+	@Autowired
+	private ChambreRepository chambreRepository;
+	
 	// pour afficher la page location user
 	@RequestMapping(value="/destinations", method=RequestMethod.GET)
     public String afficheLocation(Model model) {
@@ -42,6 +46,8 @@ public class LocationController {
 		List<Location> locationss = (List<Location>) locationRepository.findAll(); 
 		System.out.println(locationss);
 		model.addAttribute("locationss", locationss);
+		
+		System.out.println(chambreRepository.findAll());
         return "destinations";
     }
 	
