@@ -389,61 +389,52 @@ public class AdminController {
 				// pour intialiser une chambre
 				model.addAttribute("chambre", new Chambre());
 				
-				List<TypeLit> typeLits = (List<TypeLit>) typeLitRepository.findAll();
-				model.addAttribute("typeLits", typeLits);
-
 				
 				
 				// recuperation de l'id location avec la session
 				int idLoc = (int) session.getAttribute("idLoc");
 				
-				// recuperation de l'id chambre
-				int idChambre = (int) session.getAttribute("idChambre");
-
 				// affichage du nom de locotion courante
 				model.addAttribute("location", locationRepository.findOne(idLoc));
 				
-				// affichage des chambre de la location courante
-				List<TypeLit> listetypeLits = (List<TypeLit>) chambreRepository.findByIdChambre(idChambre).getTypeLits();
-				model.addAttribute("chambreTypeLits", listetypeLits);
-				return "/admin/creerlocationchambre";
+				// affichage des chamber de la location courante
+				List<Chambre> chambres = (List<Chambre>) locationRepository.findByIdLocation(idLoc).getChambres();
+				model.addAttribute("chambres", chambres);
+				System.out.println(locationRepository.findByIdLocation(idLoc).getChambres());
+		        return "/admin/creerlocationchambre";
+			
 		    }
 			
-	
-		
-			// pour sauvegarder un type lit dans une chambre dans le repository
+			
+			
+				
+
+			/*
+			 * Sauvegarder des chambres dans le repository
+			 */
 			@RequestMapping(value="/admin/creerlocationchambre", method=RequestMethod.POST)
-		    public String sauveDateDispo(Chambre chambre,TypeLit typeLit, HttpSession session) {
+		    public String sauveChambre( HttpSession session) {
 				
-				// creation id chambre
-				session.setAttribute("idChambre", chambre.getIdChambre());
-				
+				Chambre chambre = new Chambre();
+								
 				// recuperation de l'id location avec la session
 				int idLoc = (int) session.getAttribute("idLoc");
+				System.out.println("id loc = " + idLoc);
 				
-				//liste de lits
-
-				List<TypeLit> typeLits = new ArrayList<>();
-				
-				//ajouter les lit a la liste
-				typeLits.add(typeLit);
-				// ajoute la liste a la chambre
-				chambre.setTypeLits(typeLits);
-			
-				List<Chambre> chambres = new ArrayList<>();
-				chambres.add(chambre);
-				
-				typeLit.setChambres(chambres);
-
-				typeLitRepository.save(typeLit);
-				locationRepository.findOne(idLoc).setChambres(chambres);
-				
-				// association de la chambre avec la location courante
+				// association de la date dispo avec la location courante
 				chambre.setLocationChambre(locationRepository.findOne(idLoc));
 				
-				// association de la location avec la liste de chambre
+				// association de la location avec la date dispo
+				List<Chambre> chambres = new ArrayList<>();
+				chambres.add(chambre);
+				locationRepository.findOne(idLoc).setChambres(chambres);
+				
 				chambreRepository.save(chambre);
-			
+				
+				
+				
+				
+				
 				
 				
 						

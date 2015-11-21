@@ -116,7 +116,7 @@ public class AdminController2 {
 		// enregistrement de l'id location en session
 		session.setAttribute("idLoc", idLoc);
 		
-		return "redirect:/admin/creerlocationchambre";
+		return "redirect:/admin/creerlocationdatedispo";
 		
 	}
 	
@@ -128,7 +128,7 @@ public class AdminController2 {
 			model.addAttribute("chaine", new Chaine());
 			
 			
-			// pour afficher dans le tableau la liste des types proprietes
+			// pour afficher dans le tableau la liste des date dispo
 			//List<DateDispo> dateDispos = (List<DateDispo>) dateDispoRepository.findAll();
 			
 			// recuperation de l'id location avec la session
@@ -144,7 +144,7 @@ public class AdminController2 {
 	        return "/admin/creerlocationdatedispo";
 	    }
 		
-		// pour sauvegarder un type de propriete dans le repository
+		// pour sauvegarder une date dans le repository
 		@RequestMapping(value="/admin/creerlocationdatedispo", method=RequestMethod.POST)
 	    public String sauveDateDispo(Chaine chaine, HttpSession session) throws ParseException {
 			
