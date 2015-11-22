@@ -429,7 +429,19 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		//sauvegarde
 		reserverRepository.save(reservation2);
-	
+		
+		
+		/*
+		 * 
+		 * création de l'admin
+		 * 
+		 */
+		User admin = new User();
+		admin.setEmailUser("admin@admin.com");
+		String hashed3 = BCrypt.hashpw("admin", BCrypt.gensalt(12));
+		admin.setMdpUser(hashed3);
+		
+		userRepository.save(admin);
 		
 		
 		

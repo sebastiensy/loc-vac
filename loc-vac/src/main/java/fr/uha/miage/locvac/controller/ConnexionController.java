@@ -39,6 +39,13 @@ public class ConnexionController {
 		String nomUser;
 		String prenomUser;
 		
+		if (userRepository.findByEmailUser(user.getEmailUser()).getEmailUser() == "admin@admin.com") {
+			System.out.println("admin email");
+        	if (BCrypt.checkpw(user.getMdpUser(), userRepository.findByEmailUser(user.getEmailUser()).getMdpUser()))
+        	{
+        		return "redirect:/admin/index";
+        	}
+		}
 		// on cherche si il y a un email qui correspond à un user dans le repository
     	if (userRepository.findByEmailUser(user.getEmailUser()) != null) 
     	{    		
