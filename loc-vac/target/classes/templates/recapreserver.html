@@ -179,34 +179,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="criuse-main">
 					<div class="wrap">
 						<div class="criuse-head1">
-							<h3>CHEAPEST Criuse</h3>
+							<h3>	</h3>
 						</div>
 								
 								<div class="criuse-grid-info">
-									<h1><a href="#" th:text="${location.nomLocation}"></a></h1>
-									<p><table>
-										<tr><td>Adresse : </td><td th:text="${location.adresseLocation}"></td></tr>
-										<tr><td></td><td th:text="${location.codePostalLocation}"></td></tr>
-										<tr><td></td><td th:text="${location.villeLocation}"></td></tr>
-										<tr><td></td><td th:text="${location.paysLocation}"></td></tr>
-									</table></p>
+									
 
-									<p><label>Equipements : </label>
-                                	<label class="checkbox-inline" th:each=" equipement : ${equipements}">
-                                    	<input type="checkbox" th:text="${equipement.nomEquipement}" th:field="*{equipements}" th:value="${equipement.idEquipement}" disabled="disabled"/>
-                               		</label></p>
+									<p><label>Récapitulatif des réservations : </label></p>
+                                	<p th:each= " reserver : ${reservation}">
+                                		<label th:text="${reserver.idReserver}" /><br/>
+                                      	<label th:text="${reserver.locationReserver.nomLocation}" /><br/>
+                          		        <label th:text="${reserver.prixReserver} + ' €'" /><br/>
+                                       	<label th:text="'Date de début : ' + ${reserver.dateDebutReserver}" /><br/>
+                                       	<label th:text="'Date de fin : ' + ${reserver.dateFinReserver}" /><br/>
+                                	</p>
 									
-									<p><label th:text="'Nombre de salle de bain : ' + ${nbSdb}"></label><br/>
-									<label>Type de salle de bain : </label>
-                                	<label class="checkbox-inline" th:each=" typeSdb : ${typeSdbs}">
-                                    	<input type="checkbox" th:text="${typeSdb.nomTsdb}" th:field="*{typeSdbs}" th:value="${typeSdb.idTsdb}" disabled="disabled"/>
-                               		</label></p>
-									<p th:text="${location.descriptionLocation}"></p>
 									
-									<p><table border="1">
-										<tr><td>Du</td><td>Au</td></tr>
-										<tr th:each=" dateDispo : ${dateDispos}"><td th:text="${dateDispo.dateDebut}"></td><td th:text="${dateDispo.dateFin}"></td></tr>
-									</table></p>
 								</div>
 					</div>
 				</div>

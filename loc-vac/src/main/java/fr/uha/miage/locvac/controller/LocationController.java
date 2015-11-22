@@ -169,8 +169,12 @@ public class LocationController {
 	
 	// pour afficher la page location user
 	@RequestMapping(value="/recapreserver", method=RequestMethod.GET)
-    public String afficheRecapReserver(Model model) {
+    public String afficheRecapReserver(Model model, HttpSession session) {
 		
+		int idUser = (int) session.getAttribute("auth");
+		// pour afficher la réservation
+		List<Reserver> reservation = (List<Reserver>) userRepository.findOne(idUser).getReservers();
+		model.addAttribute("reservation", reservation);
 
         return "recapreserver";
     }
