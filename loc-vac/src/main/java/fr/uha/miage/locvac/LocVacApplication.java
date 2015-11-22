@@ -274,10 +274,13 @@ public class LocVacApplication implements CommandLineRunner {
 		DateDispo dateCabane1 = new DateDispo();
 		dateCabane1.setDateDebut(dateCabaneD1);
 		dateCabane1.setDateFin(dateCabaneF1);
+		dateCabane1.setLocationDateDispo(laCabanedeReve);
+
 		
 		DateDispo dateCabane2 = new DateDispo();
 		dateCabane2.setDateDebut(dateCabaneD2);
 		dateCabane2.setDateFin(dateCabaneF2);
+		dateCabane2.setLocationDateDispo(laCabanedeReve);
 		
 		List<DateDispo> listeDateDispoCabane = new ArrayList<>();
 		listeDateDispoCabane.add(dateCabane1);
