@@ -215,20 +215,22 @@
 
             
                                        
-                           <div class="form-group">
+                       <!--     <div class="form-group">
                                 <label>Chambre du logement</label>
                                 <select class="form-control" th:field="*{idChambre}">
                                     <option th:each=" chambre : ${chambres}" th:text="${chambre.idChambre}" th:value="${chambre.idChambre}" ></option>
                                 </select>
                             </div>                                    
-                                
-                                   
-                         <div class="form-group">
-                                <label>Selectionner le type de lit de la chambre</label>
-                                 <select class="form-control" th:object="${typeLit}" th:field="*{idTypeLit}">
-                                    <option th:each=" typeLit : ${typeLits}" th:text="${typeLit.nomLit}" th:value="${typeLit.idTypeLit}" ></option>
-                                </select>
-                            </div>                            
+                         -->        
+ 
+              				 <div class="form-group">
+                                <label>Types de lit de la chambre</label>
+                                <label class="checkbox-inline"  th:each=" typeLit : ${listeTypeLits}">
+                                    <input type="checkbox" th:text="${typeLit.nomLit}" th:field="*{typeLits}" th:value="${typeLit.idTypeLit}"/>
+                                </label>
+                            </div>
+                            
+
 
                             <button type="submit" class="btn btn-default">Associer un nouveau type de lit</button>
                             
@@ -243,15 +245,13 @@
                                 <thead>
                                     <tr>
                                         <th>Id Chambre</th>
-                                        <th>Action</th>
+                                 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each=" chambre : ${chambres}" >
-                                   		<td th:text="${chambre.idChambre}" />
-                                      	<td>
-										</td>
-                                   	</tr>	
+                                   		<td th:text="${chambre.idChambre}" /> 	
+                                                 	</tr>	
                                 </tbody>
                             </table>
                         </div>

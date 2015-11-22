@@ -24,8 +24,6 @@ public class Location {
 	
 	@Column(length=100)
 	private String nomLocation;
-	
-	
 	private int capaciteLocation;
 	
 	@Column(length=40)
@@ -36,8 +34,6 @@ public class Location {
 	
 	@Column(length=100)
 	private String adresseLocation;
-	
-	
 	private int superficie;
 	public int getSuperficie() {
 		return superficie;
