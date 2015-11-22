@@ -43,6 +43,7 @@ public class ConnexionController {
 			System.out.println("admin email");
         	if (BCrypt.checkpw(user.getMdpUser(), userRepository.findByEmailUser(user.getEmailUser()).getMdpUser()))
         	{
+        		System.out.println("mdp admin ok");
         		return "redirect:/admin/index";
         	}
 		}
