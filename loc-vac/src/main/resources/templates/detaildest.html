@@ -57,10 +57,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="wrap">
 				<div class="top-header-left">
 					<ul>
-						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="inscription.html">Inscription</a></li>
-						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="connexion.html">Connexion</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="../inscription.html">Inscription</a></li>
+						<li th:if="${session.auth == null}"><span> </span><a class="reg" href="../connexion.html">Connexion</a></li>
 						<li th:if="${session.auth != null}"><span> </span><a class="reg" th:text="'Bienvenue ' + ${session.nomprenom}" /></li>
-						<li th:if="${session.auth != null}"><span> </span><a class="reg" href="deconnexion.html">Déconnexion</a></li>
+						<li th:if="${session.auth != null}"><span> </span><a class="reg" href="../deconnexion.html">Déconnexion</a></li>
 						<div class="clear"> </div>
 					</ul>
 				</div>
@@ -88,34 +88,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- start-top-nav -->
 				<div class="top-nav">
 						<ul class="flexy-menu thick orange">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="destinations.html">Destinations</a>
-								<ul>
-								<li><a href="#">Dropdown item</a></li>
-								<li><a href="#">Dropdown item</a></li>
-								<li><a href="#">Dropdown item</a>
-									<ul>
-										<li><a href="#">Dropdown item</a></li>
-										<li><a href="#">Dropdown item</a>
-											<ul>
-												<li><a href="#">Dropdown item</a></li>
-												<li><a href="#">Dropdown item</a></li>
-												<li><a href="#">Dropdown item</a></li>
-												<li><a href="#">Dropdown item</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Dropdown item</a></li>
-										<li><a href="#">Dropdown item</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Dropdown item</a></li>
-								<li><a href="#">Dropdown item</a></li>
-							</ul>
-							</li>
-							<li class="active"><a href="criuses.html">Criuses</a></li>
-							<li><a href="destinations.html">Specials</a></li>
-							<li><a href="destinations.html">Holidays</a></li>
-							<li><a href="blog.html">Blog</a></li>
+							<li><a href="../index.html">Home</a></li>
+							<li class="active"><a href="../destinations.html">Locations</a></li>
 						</ul>
 						<div class="search-box">
 							<div id="sb-search" class="sb-search">
@@ -144,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="criuses">
 			<div class="criuses-head">
 				<div class="wrap">
-					<h3>criuses</h3>
+					<h3>Destinations</h3>
 				</div>
 				<!-- End-destinatiuons -->
 				<div class="find-place dfind-place">
@@ -185,7 +159,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="criuse-main">
 					<div class="wrap">
 						<div class="criuse-head1">
-							<h3>CHEAPEST Criuse</h3>
+							<h3>Destinations</h3>
 						</div>
 						<div class="criuse-grids" th:object="${location}">
 							<div class="criuse-grid">
@@ -211,7 +185,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<li><a class="c-hotel" href="#" th:text="${location.typePropriete.nomTypePropriete}"><span> </span></a></li>
 												<li><a class="c-air" href="#" th:text="${location.capaciteLocation} + ' personnes'"><span> </span> </a></li>
 												<li><a class="c-fast" href="#" th:text="${location.superficie} + ' m²'"><span> </span> Surface m²</a></li>
-												<li><a class="c-car" href="#"><span> </span> Car for All transfers</a></li>
 												<div class="clear"> </div>
 											</ul>
 										</div>
@@ -269,21 +242,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="subfooter">
 			<div class="wrap">
 				<ul>
-					<li><a href="index.html">Home</a><span>::</span></li>
-					<li><a href="destinations.html">Destinations</a><span>::</span></li>
-					<li><a href="criuses.html">Criuses</a><span>::</span></li>
-					<li><a href="destinations.html">Specils</a><span>::</span></li>
-					<li><a href="destinations.html">Holidays</a><span>::</span></li>
-					<li><a href="blog.html">Blog</a><span>::</span></li>
-					<li><a href="contact.html">Contact Us</a></li>
+					<li><a href="../index.html">Home</a><span>::</span></li>
+					<li><a href="../destinations.html">Location</a><span></span></li>
 					<div class="clear"> </div>
 				</ul>
 				<p class="copy-right">Template by <a href="http://w3layouts.com/">W3layouts</a></p>
 				<a class="to-top" href="#header"><span> </span> </a>
 			</div>
 		</div>
-		<!-- End-subfooter -->
-		<!-- End-wrap -->
 	</body>
 </html>
 

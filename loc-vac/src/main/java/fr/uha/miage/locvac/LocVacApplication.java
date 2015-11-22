@@ -198,12 +198,12 @@ public class LocVacApplication implements CommandLineRunner {
 		//sauvegarde
 		locationRepository.save(belleAuberge);
 				
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		df.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
-		Date dateAubergeD1 = df.parse("01/12/2015");
-		Date dateAubergeF1 = df.parse("31/12/2015");
-		Date dateAubergeD2 = df.parse("01/01/2016");
-		Date dateAubergeF2 = df.parse("31/12/2016");
+		DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy");
+		df1.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+		Date dateAubergeD1 = df1.parse("01/12/2015");
+		Date dateAubergeF1 = df1.parse("31/12/2015");
+		Date dateAubergeD2 = df1.parse("01/01/2016");
+		Date dateAubergeF2 = df1.parse("31/12/2016");
 		
 		DateDispo dateAuberge1 = new DateDispo();
 		dateAuberge1.setDateDebut(dateAubergeD1);
@@ -259,12 +259,17 @@ public class LocVacApplication implements CommandLineRunner {
 		 * Création de date dispo pour la cabane de reve
 		 * 
 		 */
-		//DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		df.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
-		Date dateCabaneD1 = df.parse("12/12/2015");
-		Date dateCabaneF1 = df.parse("17/12/2015");
-		Date dateCabaneD2 = df.parse("01/01/2016");
-		Date dateCabaneF2 = df.parse("06/01/2016");
+		
+		locationRepository.save(laCabanedeReve);
+
+		DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+		df2.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+		
+
+		Date dateCabaneD1 = df2.parse("12/12/2015");
+		Date dateCabaneF1 = df2.parse("17/12/2015");
+		Date dateCabaneD2 = df2.parse("01/01/2016");
+		Date dateCabaneF2 = df2.parse("06/01/2016");
 		
 		DateDispo dateCabane1 = new DateDispo();
 		dateCabane1.setDateDebut(dateCabaneD1);
@@ -283,42 +288,6 @@ public class LocVacApplication implements CommandLineRunner {
 		dateDispoRepository.save(dateCabane1);
 		dateDispoRepository.save(dateCabane2);
 		
-		locationRepository.save(laCabanedeReve);
-
-
-		
-		
-		
-		/*// Location 1
-		List<Location> locations1 = new ArrayList<>();
-		locations1.add(belleAuberge);
-		
-		//tv.setLocations(locations1);
-		//equipementRepository.save(tv);
-		
-		jacuzzi.setLocations(locations1);
-		typeSdbRepository.save(jacuzzi);
-		baignoire.setLocations(locations1);
-		typeSdbRepository.save(baignoire);
-		
-
-		
-		// Location 2
-		List<Location> locations2 = new ArrayList<>();
-		locations2.add(laCabanedeReve);
-		
-				
-		//douche.setLocations(locations2);
-		//typeSdbRepository.save(douche);
-		
-		// Location 1 et 2
-		List<Location> locations3 = new ArrayList<>();
-		locations3.add(belleAuberge);
-		locations3.add(laCabanedeReve);
-		
-		wifi.setLocations(locations3);
-		equipementRepository.save(wifi);*/
-		
 
 		
 		/*
@@ -334,7 +303,7 @@ public class LocVacApplication implements CommandLineRunner {
 		User user1 = new User();
 		user1.setNomUser("Sy");
 		user1.setPrenomUser("Sebastien");
-		user1.setEmailUser("sebastien.sy@gmail.com");
+		user1.setEmailUser("sebastien.sy@gnet.com");
 		
 		// hashage du mot de passe
     	String hashed1 = BCrypt.hashpw("azzz", BCrypt.gensalt(12));
