@@ -174,16 +174,17 @@ public class AdminController2 {
 			
 			dateDispoRepository.save(dateDispo);
 			
-			
-	
 			return "redirect:/admin/creerlocationdatedispo";
 	    }
 	
 	
 	
-	
-
-
+		@RequestMapping("/supprimerDateDispo/{idDateDispo}")
+		public String supprimeDateDispo(@PathVariable("idDateDispo") Integer idDateDispo) {
+			dateDispoRepository.delete(idDateDispo);
+			return "redirect:/admin/equipements";
+		}
+			
 	
 	
 	
