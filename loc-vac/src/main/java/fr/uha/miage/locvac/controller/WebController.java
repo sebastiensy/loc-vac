@@ -14,12 +14,7 @@ import fr.uha.miage.locvac.repository.UserRepository;
 @Controller
 public class WebController {
 
-    /*@RequestMapping("/greeting")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }*/
-	
+   	
 	@Autowired
 	private UserRepository userRepository;
     
@@ -30,7 +25,6 @@ public class WebController {
     
     @RequestMapping("/index")
     public String index() {
-    	System.out.println(userRepository.findAll());
     	return "index";
     }
     

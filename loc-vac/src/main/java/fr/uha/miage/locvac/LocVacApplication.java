@@ -380,7 +380,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//creation d'une date
-		/*Date dateDebutReserv = new Date();
+		Date dateDebutReserv = new Date();
 		Date dateFinReserv= new Date();
 		
 		//creation de l'objet reservation
@@ -398,7 +398,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//sauvegarde
-		reserverRepository.save(reservation1);*/
+		reserverRepository.save(reservation1);
 		
 		
 		
@@ -410,7 +410,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//creation de l'objet reservation
-		/*Reserver reservation2 = new Reserver();
+		Reserver reservation2 = new Reserver();
 		reservation2.setDateDebutReserver(dateDebutReserv);
 		reservation2.setDateFinReserver(dateFinReserv);
 		reservation2.setLocationReserver(belleAuberge);
@@ -428,7 +428,7 @@ public class LocVacApplication implements CommandLineRunner {
 		
 		
 		//sauvegarde
-		reserverRepository.save(reservation2);*/
+		reserverRepository.save(reservation2);
 	
 		
 		

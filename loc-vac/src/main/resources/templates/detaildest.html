@@ -159,6 +159,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						  $(function() {
 						    $( "#datepicker" ).datepicker();
 						  });
+						  $(function() {
+							    $( "#datepicker1" ).datepicker();
+							  });
+						  $(function() {
+							    $( "#datepicker2" ).datepicker();
+							  });
 						  </script>
 						<!-- End-date-piker -->
 						<div class="p-ww">
@@ -240,8 +246,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</table></p>
 									
 																		
-                               		
-									<a class="btn" href="#">Réserver</a>
+                               		<div class="p-ww">
+      		                        <form role="form" action="#" th:action="@{/detaildest}" th:object="${reserver}" method="post">
+              						<p th:if="${session.auth == null}" th:text="'Veuillez vous connecter avant de réserver !'"></p> 
+      		                   		<button type="submit" class="btn">Réserver</button>
+      		                   		<input class="date" id="datepicker1" type="text" th:field="*{dateDebutReserver}" value="Select date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}"/>
+									<input class="date" id="datepicker2" type="text" th:field="*{dateFinReserver}" value="Select date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}"/>
+      		                   		<!--  
+                                	<input type="text" th:field="*{dateDebutReserver}" />
+                                	<input type="text" th:field="*{dateFinReserver}" />-->
+                                	</form>
+                                	</div>
 								</div>
 							</div>
 						  </div>
