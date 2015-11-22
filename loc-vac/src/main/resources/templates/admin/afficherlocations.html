@@ -214,7 +214,8 @@
                                     <tr>
 	                                    <th>Id Location</th>
                                         <th>Nom</th>
-                                        <th>Capacite</th>
+                                        <th>Capacité(personnes)</th>
+                                        <th>Superficie</th>
                                         <th>Adresse</th>
                                         <th>Code postal</th>
                                         <th>Ville</th>
@@ -222,7 +223,6 @@
                                         <th>Prix (en euros)</th>
                                         <th>Type de propriété</th>
                                         
-                                        <th>Modifer</th>
                                         <th>Supprimer</th>
                                     </tr>
                                 </thead>
@@ -231,6 +231,7 @@
                             	   		<td th:text="${location.idLocation}" />
                                        	<td th:text="${location.nomLocation}" />
                                        	<td th:text="${location.capaciteLocation}" />
+                                   		<td th:text="${location.superficie}" />
                                    		<td th:text="${location.adresseLocation}" />
                                    		<td th:text="${location.codePostalLocation}" />
                                       	<td th:text="${location.villeLocation}" />
@@ -238,7 +239,7 @@
                                         <td th:text="${location.prixLocation}" />
                                         <td th:text="${location.typePropriete.nomTypePropriete}" />
                                           
-                                        <td>Modifier</td>
+                                   
                                         <td>
 											<a th:href="@{'/supprimerLocation/'+${location.idLocation}}">Supprimer</a>
 										</td>                                   	

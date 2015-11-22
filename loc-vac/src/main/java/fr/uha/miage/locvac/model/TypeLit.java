@@ -38,7 +38,7 @@ public class TypeLit {
 	public void setNomLit(String nomLit) {
 		this.nomLit = nomLit;
 	}
-	//(mappedBy="typeLits")
+	
 	@ManyToMany
 	private List<Chambre> chambres;
 

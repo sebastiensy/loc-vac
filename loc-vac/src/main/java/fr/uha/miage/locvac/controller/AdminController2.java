@@ -108,7 +108,7 @@ public class AdminController2 {
 				
 		locationRepository.save(location);
 		
-		System.out.println(locationRepository.findAll());
+		//System.out.println(locationRepository.findAll());
 		
 		// recuperation de l'id location
 		int idLoc = location.getIdLocation();

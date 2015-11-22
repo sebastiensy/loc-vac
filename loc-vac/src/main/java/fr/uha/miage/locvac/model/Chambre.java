@@ -31,7 +31,7 @@ public class Chambre  {
 	}
 	
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="chambres")
 	private List<TypeLit> typeLits;
 	
 	@ManyToOne
