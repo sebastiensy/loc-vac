@@ -1,5 +1,6 @@
 package fr.uha.miage.locvac.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -89,41 +90,78 @@ public class LocationController {
 		model.addAttribute("reserver", new Reserver());
 		
 		
-		session.setAttribute("idloc", idLocation);
+		session.setAttribute("idlocuser", idLocation);
 		//System.out.println(locationRepository.findOne(idLocation));
 		return "detaildest";
     }
 	
 	@RequestMapping(value="/detaildest", method=RequestMethod.POST)
     public String creerReservation(Reserver reserver, Model model, HttpSession session) {
+		int idLocUser = (int) session.getAttribute("idlocuser");
 		
-		// reservation pour l'user connecté
-		System.out.println("iduser : " +  session.getAttribute("auth"));
-		int idUser = (int) session.getAttribute("auth");
-		reserver.setUserReserver(userRepository.findOne(idUser));
+		if (session.getAttribute("auth")!=null)
+		{
+			// reservation pour l'user connecté
+			System.out.println("iduser : " +  session.getAttribute("auth"));
+			int idUser = (int) session.getAttribute("auth");
+			reserver.setUserReserver(userRepository.findOne(idUser));
+			
+			// reservation de la location courante
+			System.out.println("idlocuser : " +  session.getAttribute("idlocuser"));
+			
+			reserver.setLocationReserver(locationRepository.findOne(idLocUser));
+			
+			
+			// calcul du prix de la location en fonction du nb de jours de reservation
+			long diff = reserver.getDateFinReserver().getTime() - reserver.getDateDebutReserver().getTime();
+		    long nbJoursReserv = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+			double prixLoc = nbJoursReserv * locationRepository.findOne(idLocUser).getPrixLocation();
+			reserver.setPrixReserver(prixLoc);
+			
+			// verification si dates de reservation comprises entre date dispo
+			List<DateDispo> listeDateDispo = locationRepository.findOne(idLocUser).getDateDispo();
+			Iterator i = listeDateDispo.iterator();
+			while(i.hasNext()){
+				  DateDispo dd = (DateDispo) i.next();
+				  System.out.println(dd);
+				  try {
+					  Date dateDebut = dd.getDateDebut();
+					  Date dateFin = dd.getDateFin();
+					System.out.println(dd.getDateDebut());
+					System.out.println(dd.getDateFin());
+					
+					if (dateDebut.compareTo(reserver.getDateDebutReserver()) * reserver.getDateDebutReserver().compareTo(dateFin) > 0 && dateDebut.compareTo(reserver.getDateFinReserver()) * reserver.getDateFinReserver().compareTo(dateFin) > 0)
+					{
+						System.out.println("ok pour date debut et date fin");
+						
+						reserverRepository.save(reserver);
+						
+						
+						return "redirect:/recapreserver";
+						
+					}
+					else
+					{
+						System.out.println("pas bon");
+		        		session.setAttribute("msgerreur", "Veuillez rentrer une période disponible");
+
+						
+					}
 		
-		// reservation de la location courante
-		System.out.println("idloc : " +  session.getAttribute("idloc"));
-		int idLoc = (int) session.getAttribute("idloc");
-		reserver.setLocationReserver(locationRepository.findOne(idLoc));
+
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			
+			return "redirect:/detaildest/"+idLocUser;
+		}
 		
-		
-		// calcul du prix de la location en fonction du nb de jours de reservation
-		long diff = reserver.getDateFinReserver().getTime() - reserver.getDateDebutReserver().getTime();
-	    long nbJoursReserv = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-		double prixLoc = nbJoursReserv * locationRepository.findOne(idLoc).getPrixLocation();
-		reserver.setPrixReserver(prixLoc);
-		
-		// verification si dates de reservation comprises entre date dispo
-		List<DateDispo> listeDateDispo = locationRepository.findOne(idLoc).getDateDispo();
-		Iterator i = listeDateDispo.iterator();
-		
-		
-		
-		reserverRepository.save(reserver);
-		
-		
-		return "redirect:/recapreserver";
+		return "redirect:/detaildest/"+idLocUser;
+
+
     }
 	
 	
@@ -133,17 +171,7 @@ public class LocationController {
 	@RequestMapping(value="/recapreserver", method=RequestMethod.GET)
     public String afficheRecapReserver(Model model) {
 		
-		//System.out.println(reserverRepository.findAll());
-		/*// pour afficher dans le tableau la liste des locations 
-		List<Location> locations = (List<Location>) locationRepository.findAll(); 
-		System.out.println(locations);
-		model.addAttribute("locations", locations);
-		
-		List<Location> locationss = (List<Location>) locationRepository.findAll(); 
-		System.out.println(locationss);
-		model.addAttribute("locationss", locationss);
-		
-		System.out.println(chambreRepository.findAll());*/
+
         return "recapreserver";
     }
 	

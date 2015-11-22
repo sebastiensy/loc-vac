@@ -181,37 +181,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="criuse-head1">
 							<h3>CHEAPEST Criuse</h3>
 						</div>
-						<!-- <div class="criuse-grids" th:object="${location}">
-							<div class="criuse-grid">
-								<div class="criuse-grid-head">
-									<div class="criuse-img">
-										<div class="criuse-pic">
-											<img th:src="${location.url}" title="criuse-name" />
-										</div>
-										<div class="criuse-pic-info">
-												<div class="criuse-pic-info-top">
-													<div class="criuse-pic-info-top-place-name">
-														<h2><label th:text="${location.paysLocation}"></label><span th:text="${location.villeLocation}"></span></h2>
-													</div>
-												</div>
-												<div class="criuse-pic-info-price">
-													<p><span>Prix : </span> <h4 th:text="${location.prixLocation} + ' €'"></h4></p>
-												</div>
-										</div>
-									</div>
-									<div class="criuse-info">
-										<div class="criuse-info-left">
-											<ul>
-												<li><a class="c-hotel" href="#" th:text="${location.typePropriete.nomTypePropriete}"><span> </span></a></li>
-												<li><a class="c-air" href="#" th:text="${location.capaciteLocation} + ' personnes'"><span> </span> </a></li>
-												<li><a class="c-fast" href="#" th:text="${location.superficie} + ' m²'"><span> </span> Surface m²</a></li>
-												<li><a class="c-car" href="#"><span> </span> Car for All transfers</a></li>
-												<div class="clear"> </div>
-											</ul>
-										</div>
-										<div class="clear"> </div>
-									</div>
-								</div>
+								
 								<div class="criuse-grid-info">
 									<h1><a href="#" th:text="${location.nomLocation}"></a></h1>
 									<p><table>
@@ -225,7 +195,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 	<label class="checkbox-inline" th:each=" equipement : ${equipements}">
                                     	<input type="checkbox" th:text="${equipement.nomEquipement}" th:field="*{equipements}" th:value="${equipement.idEquipement}" disabled="disabled"/>
                                		</label></p>
-									<p th:text="${location.descriptionLocation}"></p>
 									
 									<p><label th:text="'Nombre de salle de bain : ' + ${nbSdb}"></label><br/>
 									<label>Type de salle de bain : </label>
@@ -238,13 +207,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<tr><td>Du</td><td>Au</td></tr>
 										<tr th:each=" dateDispo : ${dateDispos}"><td th:text="${dateDispo.dateDebut}"></td><td th:text="${dateDispo.dateFin}"></td></tr>
 									</table></p>
-									
-																		
-                               		
-									<a class="btn" href="#">Réserver</a>
 								</div>
-							</div>
-						  </div>-->
 					</div>
 				</div>
 				<!-- End-criuse-grids -->
