@@ -118,6 +118,7 @@
                                         <th>Prénom</th>
                                         <th>Email</th>
                                         <th>Téléphone</th>
+                                        <th>Action</th>
                                    </tr>
                                 </thead>
                                 <tbody>
@@ -131,6 +132,9 @@
                                        	<td th:text="${user.prenomUser}" />
                                        	<td th:text="${user.emailUser}" />
                                        	<td th:text="${user.telUser}" />
+                                       	<td>
+											<a th:href="@{'/supprimerUser/'+${user.idUser}}">Supprimer</a>
+										</td> 
                                    	</tr>	
    
                                 </tbody>

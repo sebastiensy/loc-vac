@@ -315,6 +315,13 @@ public class AdminController {
         return "/admin/tableusers";
     }
 	
+	// pour supprimer un user
+	@RequestMapping("/supprimerUser/{idUser}")
+	public String supprimeUser(@PathVariable("idUser") Integer idUser) {
+		userRepository.delete(idUser);
+		return "redirect:/admin/tableusers";
+	}
+	
 	// pour afficher les reservations d'un user
 	@RequestMapping("/admin/reservationuser/{id}")
 	public String afficheReservationUser(@PathVariable("id") Integer idUser, Model model, HttpSession session) {
